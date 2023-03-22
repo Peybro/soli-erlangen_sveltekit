@@ -1,0 +1,104 @@
+<script lang="ts">
+	export let data;
+
+	let aktuell = data.newsPapers[0].split('/').slice(-1).toString().split('_');
+</script>
+
+<h2 class="heading">Zeitung</h2>
+
+<div class="accordion">
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="panelsStayOpen-headingOne">
+			<button
+				class="accordion-button"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#panelsStayOpen-collapseOne"
+			>
+				Aktuelle Ausgabe: <span class="fw-bold"
+					>{aktuell[3] === '1.pdf'
+						? 'Frühling-Herbst'
+						: 'Herbst ' + aktuell[2] + '-Frühling' + ' ' + (parseInt(aktuell[2]) + 1)}</span
+				>
+			</button>
+		</h2>
+		<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+			<div class="accordion-body">
+				<iframe
+					src={data.newsPapers[0]}
+					loading="lazy"
+					width="100%"
+					height="600px"
+					title={data.newsPapers[0].split('/').slice(-1).toString()}
+				/>
+				<a
+					type="button"
+					class="btn btn-primary"
+					href={data.newsPapers[0]}
+					target="_blank"
+					rel="noreferrer"
+				>
+					Größer anzeigen
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+			<button
+				class="accordion-button collapsed"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#panelsStayOpen-collapseTwo"
+			>
+				Ältere Ausgaben:
+			</button>
+		</h2>
+		<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+			<div class="accordion-body">
+				<div class="grid">
+					{#each data.newsPapers.slice(1) as newsPaper, i}
+						<div>
+							<iframe
+								src={newsPaper}
+								loading="lazy"
+								width="100%"
+								height="300px"
+								title={newsPaper.split('/').slice(-1).toString()}
+							/>
+							<a
+								type="button"
+								class="btn btn-primary"
+								href={newsPaper}
+								target="_blank"
+								rel="noreferrer"
+							>
+								{newsPaper.split('/').slice(-1).toString().split('_')[3] === '1.pdf'
+									? 'Frühling-Herbst ' + newsPaper.split('/').slice(-1).toString().split('_')[2]
+									: 'Herbst ' +
+									  newsPaper.split('/').slice(-1).toString().split('_')[2] +
+									  '-Frühling' +
+									  ' ' +
+									  (parseInt(newsPaper.split('/').slice(-1).toString().split('_')[2]) + 1)}
+							</a>
+						</div>
+					{/each}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 1rem;
+	}
+
+	@media screen and (max-width: 600px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
