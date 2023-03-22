@@ -8,8 +8,8 @@
 	const { form, errors, constraints, enhance, delayed } = superForm(data.form);
 </script>
 
-<div class={`banner bg-${$form.bgColor}`}>
-	<h1>{$form.title}</h1>
+<div class={`alert bg-${$form.bgColor}`} role="alert">
+	<h4 class="alert-heading">{$form.title}</h4>
 	<p>{$form.description}</p>
 </div>
 
