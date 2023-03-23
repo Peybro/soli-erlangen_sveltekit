@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import type { PageData } from './$types';
 	export let data: PageData;
+
+	let mapsCopy = data.maps?.valueOf() ?? '1';
 </script>
 
 <!-- svelte-ignore a11y-missing-content -->
@@ -21,7 +24,7 @@
 	</li>
 </ul>
 
-<form method="post" class="border p-2">
+<form method="post" action="?/saveCookie" class="border p-2" use:enhance>
 	<div class="alert alert-warning d-flex flex-column" role="alert">
 		<img
 			id="cookies"
@@ -46,6 +49,7 @@
 				name="mapSelection"
 				id="flexRadioDefault1"
 				checked={data.maps === '1'}
+				on:change={() => (mapsCopy = '1')}
 				value="1"
 			/>
 			<label class="form-check-label" for="flexRadioDefault1"> OpenStreet Maps </label>
@@ -57,11 +61,11 @@
 				name="mapSelection"
 				id="flexRadioDefault0"
 				checked={data.maps === '0'}
-				on:select={() => (data.maps = '0')}
+				on:change={() => (mapsCopy = '0')}
 				value="0"
 			/>
 			<label class="form-check-label" for="flexRadioDefault0"> Google Maps </label>
-			{#if data.maps === '0'}
+			{#if mapsCopy === '0'}
 				<small class="invalid">Wird einen Google-Cookie anlegen</small>
 			{/if}
 		</div>
@@ -72,6 +76,7 @@
 				name="mapSelection"
 				id="flexRadioDefault2"
 				checked={data.maps === '2'}
+				on:change={() => (mapsCopy = '2')}
 				value="2"
 			/>
 			<label class="form-check-label" for="flexRadioDefault2">
