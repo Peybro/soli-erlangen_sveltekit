@@ -42,5 +42,5 @@
 		<Trainer />
 	</div>
 
-	<Location openMaps={data.mapSelection} />
+	<Location maps={data.mapSelection || '1'} />
 </div>

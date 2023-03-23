@@ -8,7 +8,7 @@
 	const { form, errors, constraints, enhance, delayed } = superForm(data.form);
 </script>
 
-<div class={`alert bg-${$form.bgColor}`} role="alert">
+<div class={`alert alert-${$form.bgColor}`} class:muted={!$form.enabled} role="alert">
 	<h4 class="alert-heading">{$form.title}</h4>
 	<p>{$form.description}</p>
 </div>
@@ -83,8 +83,12 @@
 </form>
 
 <style lang="scss">
+	.muted {
+		opacity: 0.6;
+		filter: grayscale(100%);
+	}
+
 	form {
-		margin: 1rem;
 		height: 100%;
 		background: #f1f1f1;
 		padding: 2rem;
@@ -133,32 +137,6 @@
 		.invalid {
 			color: red;
 			margin-top: 0.3rem;
-		}
-	}
-
-	.banner {
-		padding: 1rem;
-		margin: 1rem;
-		border-radius: 0.5rem;
-
-		&.bg-success {
-			background-color: #d1e7dd;
-			color: #0f5152;
-		}
-
-		&.bg-warning {
-			background-color: #fff3cd;
-			color: #664d37;
-		}
-
-		&.bg-danger {
-			background-color: #f8d7da;
-			color: #842029;
-		}
-
-		&.bg-primary {
-			background-color: #cfe2ff;
-			color: #084298;
 		}
 	}
 </style>

@@ -32,6 +32,6 @@ export const load = async ({ cookies }) => {
 
 	return {
 		imageArray,
-		mapSelection: cookies.get('mapSelection') === '1'
+		mapSelection: cookies.get('mapSelection')
 	};
 };

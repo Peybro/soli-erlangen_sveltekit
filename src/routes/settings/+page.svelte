@@ -1,6 +1,14 @@
 <script lang="ts">
-	export let data;
+	import type { PageData } from './$types';
+	export let data: PageData;
 </script>
+
+<!-- svelte-ignore a11y-missing-content -->
+<!-- <a
+	href="/"
+	type="button"
+	class="btn-close float-end"
+/> -->
 
 <h2 class="heading">Einstellungen</h2>
 
@@ -30,34 +38,58 @@
 		</div>
 	</div>
 
-	<div class="form-check">
-		<input
-			class="form-check-input"
-			type="radio"
-			name="mapSelection"
-			id="flexRadioDefault1"
-			checked={data.openMaps === '1'}
-			value="1"
-		/>
-		<label class="form-check-label" for="flexRadioDefault1"> OpenStreet Maps </label>
-	</div>
-	<div class="form-check">
-		<input
-			class="form-check-input"
-			type="radio"
-			name="mapSelection"
-			id="flexRadioDefault2"
-			checked={data.openMaps === '0'}
-			value="0"
-		/>
-		<label class="form-check-label" for="flexRadioDefault2"> Google Maps </label>
+	<div class="mx-2">
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="mapSelection"
+				id="flexRadioDefault1"
+				checked={data.maps === '1'}
+				value="1"
+			/>
+			<label class="form-check-label" for="flexRadioDefault1"> OpenStreet Maps </label>
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="mapSelection"
+				id="flexRadioDefault0"
+				checked={data.maps === '0'}
+				on:select={() => (data.maps = '0')}
+				value="0"
+			/>
+			<label class="form-check-label" for="flexRadioDefault0"> Google Maps </label>
+			{#if data.maps === '0'}
+				<small class="invalid">Wird einen Google-Cookie anlegen</small>
+			{/if}
+		</div>
+		<div class="form-check">
+			<input
+				class="form-check-input"
+				type="radio"
+				name="mapSelection"
+				id="flexRadioDefault2"
+				checked={data.maps === '2'}
+				value="2"
+			/>
+			<label class="form-check-label" for="flexRadioDefault2">
+				Keine eingebettete Karte (nur Adresse)
+			</label>
+		</div>
 	</div>
 
-	<button type="submit" class="btn btn-primary">Speichern</button>
+	<button type="submit" class="btn btn-primary mt-2">Speichern</button>
 </form>
 
 <style>
 	img#cookies {
 		width: 200px;
+	}
+
+	.invalid {
+		color: red;
+		margin-top: 0.3rem;
 	}
 </style>

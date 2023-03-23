@@ -1,5 +1,10 @@
-export const load = async ({ cookies }) => {
+import type { PageServerLoad } from './$types';
+
+export const load = (async ({ cookies }) => {
 	return {
-		mapSelection: cookies.get('mapSelection') === '1'
+		maps:
+			cookies.get('mapSelection') !== undefined || cookies.get('mapSelection') !== ''
+				? cookies.get('mapSelection')
+				: 1
 	};
-};
+}) satisfies PageServerLoad;
