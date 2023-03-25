@@ -1,4 +1,4 @@
-export const load = async ({}) => {
+export const load = async () => {
 	return {
 		sport: 'Gymnastik',
 		subheading: 'Eine Sportart, die Körper und Geist fordert',

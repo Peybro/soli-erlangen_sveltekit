@@ -1,4 +1,4 @@
-export const load = async ({}) => {
+export const load = async () => {
 	return {
 		sport: 'Reigen',
 		subheading: 'Eine kunstvolle Kombination aus Rhythmus und Balance',

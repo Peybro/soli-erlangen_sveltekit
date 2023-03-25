@@ -1,4 +1,4 @@
-export const load = async ({}) => {
+export const load = async () => {
 	return {
 		sport: 'Kunstrad',
 		subheading: 'Eine anspruchsvolle Sportart mit artistischem Anspruch',

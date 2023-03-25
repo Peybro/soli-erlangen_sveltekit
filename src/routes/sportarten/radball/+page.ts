@@ -1,4 +1,4 @@
-export const load = async ({}) => {
+export const load = async () => {
 	return {
 		sport: 'Radball',
 		subheading: 'Eine faszinierende Kombination aus Radfahren und Ballsport',
