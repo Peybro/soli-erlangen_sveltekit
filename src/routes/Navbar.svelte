@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 
 	import { doc, onSnapshot } from 'firebase/firestore';
-	import db from '../lib/services/firebase';
+	import { db } from '../lib/services/firebase';
 
 	import { Hamburger } from 'svelte-hamburgers';
 

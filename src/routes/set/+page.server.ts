@@ -5,7 +5,7 @@ import { superValidate } from 'sveltekit-superforms/server';
 
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import db from '$lib/services/firebase';
+import { db } from '$lib/services/firebase';
 
 // See https://zod.dev/?id=primitives for schema syntax
 const schema = z.object({

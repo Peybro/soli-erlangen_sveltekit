@@ -1,12 +1,40 @@
 <script lang="ts">
 	export let data;
 
-	let aktuell = data.newsPapers[0].split('/').slice(-1).toString().split('_');
+	// let aktuell = data.newsPapers[0].split('/').slice(-1).toString().split('_');
 </script>
 
 <h2 class="heading">Zeitung</h2>
 
-<div class="accordion">
+{#await data.files}
+	<p>loading...</p>
+{:then files}
+	<iframe src={files[0]} title={'Test'} loading="lazy" />
+{:catch error}
+	<p style="color: red">{error.message}</p>
+{/await}
+
+<!-- <object data={data.files[0]} type="application/pdf" width="100%" height="600px" title="Test">
+	<p>
+		It appears you don't have a PDF plugin for this browser. No biggie... you can <a
+			href={data.files[0]}>click here to download the PDF file.</a
+		>
+	</p>
+</object> -->
+
+<!-- {#each data.files as pdf}
+	<iframe src={pdf} title={pdf.split('/').slice(-1).toString()} />
+
+	<object data={pdf} type="application/pdf" width="100%" height="600px" title="Test">
+		<p>
+			It appears you don't have a PDF plugin for this browser. No biggie... you can <a
+				href={pdf}>click here to download the PDF file.</a
+			>
+		</p>
+	</object>
+{/each} -->
+
+<!-- <div class="accordion">
 	<div class="accordion-item">
 		<h2 class="accordion-header" id="panelsStayOpen-headingOne">
 			<button
@@ -87,10 +115,9 @@
 			</div>
 		</div>
 	</div>
-</div>
-
+</div> -->
 <style>
-	.grid {
+	/* .grid {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-gap: 1rem;
@@ -100,5 +127,10 @@
 		.grid {
 			grid-template-columns: 1fr;
 		}
+	} */
+
+	iframe {
+		width: 100%;
+		height: 600px;
 	}
 </style>
