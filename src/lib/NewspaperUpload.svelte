@@ -11,8 +11,10 @@
 	let yearTo: number;
 	let password = '';
 
-	let wrongPasswordError = false;
-	let wrongPasswordErrorMessage = '';
+	let loading = false;
+	let success = false;
+	let uploadError = false;
+	let errorMessage = '';
 
 	function handleSeasonFromChange() {
 		seasonTo = seasonFrom === 1 ? 2 : 1;
@@ -44,20 +46,21 @@
 	$: {
 		const seasonRegex = /20\d\d_\d/;
 		const result = seasonRegex.exec(newsPaperName);
-		if (newsPaperName !== undefined && result !== undefined && result !== null)
+		if (newsPaperName !== undefined && result !== undefined && result !== null) {
 			seasonFrom = parseInt(result[0].split('_')[1]);
+		}
 	}
 
 	$: seasonTo = seasonFrom === 1 ? 2 : 1;
 
 	async function uploadPDF(event: any) {
 		event.preventDefault();
-		wrongPasswordError = true;
+
+		uploadError = false;
+		loading = true;
 
 		let file = event.target[0].files[0];
-
 		const uploadRef = ref(storage, `Vereinsblatt/soli_info_${yearFrom}_${seasonFrom}.pdf`);
-
 		const auth = getAuth();
 
 		await signInWithEmailAndPassword(auth, 'vorstand@soli-erlangen.de', password || '')
@@ -68,18 +71,50 @@
 
 				await uploadBytes(uploadRef, file)
 					.then((snapshot) => {
-						console.log('Uploaded a blob or file!');
+						// console.log('Uploaded a blob or file!');
+						loading = false;
+						success = true;
+						setTimeout(() => {
+							success = false;
+							newsPaperName = '';
+							password = '';
+						}, 5000);
 					})
 					.catch((error) => {
-						console.log(error);
+						// console.log(error);
+						loading = false;
+						errorMessage = error.message;
+						uploadError = true;
+						setTimeout(() => {
+							uploadError = false;
+						}, 10000);
 					});
 			})
 			.catch((error) => {
-				wrongPasswordError = true;
-				wrongPasswordErrorMessage = error.message;
+				loading = false;
+				errorMessage = error.message;
+				uploadError = true;
+				setTimeout(() => {
+					uploadError = false;
+				}, 10000);
 			});
 	}
 </script>
+
+{#if loading}
+	<div class="alert alert-info" role="alert">
+		<div class="d-flex align-items-center">
+			<span>Hochladen...</span>
+			<div class="spinner-border ms-auto" role="status" aria-hidden="true" />
+		</div>
+	</div>
+{/if}
+{#if uploadError}
+	<div class="alert alert-danger" role="alert">{errorMessage}</div>
+{/if}
+{#if success}
+	<div class="alert alert-success" role="alert">Upload erfolgreich!</div>
+{/if}
 
 <div class="card p-3">
 	<form enctype="multipart/form-data" on:submit={(e) => uploadPDF(e)}>
@@ -131,7 +166,7 @@
 
 		<div class="p-2 my-2 card">
 			<div class="row">
-                <div class="col-1">
+				<div class="col-1">
 					<span class="from-to">Bis</span>
 				</div>
 
@@ -175,9 +210,6 @@
 				placeholder="Passwort"
 				bind:value={password}
 			/>
-			{#if wrongPasswordError}
-				<small class="invalid">{wrongPasswordErrorMessage}</small>
-			{/if}
 		</div>
 
 		<button
@@ -185,6 +217,7 @@
 			class="btn btn-primary my-3"
 			disabled={!(
 				newsPaperName.length > 0 &&
+				newsPaperName.endsWith('.pdf') &&
 				password.length > 0 &&
 				yearTo !== undefined &&
 				yearFrom !== undefined &&
@@ -193,13 +226,3 @@
 		>
 	</form>
 </div>
-
-<style>
-    .from-to {
-        font-size: 1.5rem;
-    }
-
-	.invalid {
-		color: red;
-	}
-</style>
