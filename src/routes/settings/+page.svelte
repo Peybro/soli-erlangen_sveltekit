@@ -20,6 +20,9 @@
 		<a href="/set">Banner einstellen</a>
 	</li>
 	<li>
+		<a href="/dashboard">Dashboard</a>
+	</li>
+	<li>
 		<a href="https://soli-erlangen.de/spiel/" target="_blank">Spielberichtsbogen</a>
 	</li>
 </ul>

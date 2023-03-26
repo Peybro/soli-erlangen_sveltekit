@@ -3,7 +3,6 @@
 		<a href="/impressum" class="nav-item text-light text-decoration-none mx-2">Impressum</a>
 
 		<div class="container d-flex justify-content-end">
-			<a href="/dashboard" class="nav-item text-light text-decoration-none mx-2">Login</a>
 			<a href="/settings" class="nav-item text-light text-decoration-none">Einstellungen</a>
 		</div>
 	</div>
