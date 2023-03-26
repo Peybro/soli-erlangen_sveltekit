@@ -78,8 +78,9 @@
 			<small class="invalid">{$errors.password}</small>
 		{/if}
 	</div>
-	<button class="" type="submit">Speichern</button>
-	{#if $delayed}Working...{/if}
+	<button class="" type="submit"
+		>Speichern {#if $delayed}...{/if}</button
+	>
 </form>
 
 <style lang="scss">

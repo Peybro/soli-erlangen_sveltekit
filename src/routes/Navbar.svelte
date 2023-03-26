@@ -41,13 +41,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark">
 		<div class="container">
 			<a class="navbar-brand" href="/"
-				><img
-					src="/logo.png"
-					width="40"
-					id="logo"
-					alt="Logo"
-					class="d-inline-block align-text-top"
-				/> Soli-Erlangen</a
+				><img src="/logo.png" width="40" id="logo" alt="Logo" class="d-inline-block" /> Soli-Erlangen</a
 			>
 			<!-- <button
 				class="navbar-toggler"

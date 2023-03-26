@@ -10,7 +10,7 @@
 {:then res}
 	<div class="accordion">
 		<div class="accordion-item">
-			{#await getDownloadURL([...res.items].reverse()[0])}
+			{#await getDownloadURL([...res.items].sort().reverse()[0])}
 				<div class="alert alert-info" role="alert">Lade aktuelle Ausgabe...</div>
 			{:then url}
 				<h2 class="accordion-header" id="panelsStayOpen-headingOne">
