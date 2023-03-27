@@ -20,7 +20,7 @@ export const load = async () => {
 				text: [
 					'Die Regeln des Radballs sind vergleichsweise einfach. Die Mannschaften bestehen aus zwei Spielern, die auf einem speziellen Fahrrad namens "Radballrad" sitzen. Das Rad ist kleiner als ein normales Fahrrad und hat keine Bremsen. Der Ball ist etwa so groß wie ein Handball und wird mit den Rädern ins Tor befördert. Ein Tor zählt immer dann, wenn der Ball die Torlinie überquert.',
 					'Die Spielzeit beträgt üblicherweise 2 x 7 Minuten mit einer Pause von 2 Minuten zwischen den Halbzeiten. Gewonnen hat das Team, das am Ende der Spielzeit mehr Tore erzielt hat. Bei einem Unentschieden wird in der Regel eine Verlängerung gespielt.',
-					'Ausrüstung: Fahrrad, Schienbeinschoner, Schuhe'
+					'Ausrüstung: Eigentlich nur das Fahrrad, knöchelhohe Schuhe und Schienbeinschoner sind außerdem empfehlenswert'
 				]
 			},
 			{

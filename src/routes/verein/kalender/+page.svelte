@@ -20,18 +20,25 @@
 	function addNewEvent(event: any) {
 		event.preventDefault();
 
-		events.push({
-			name: newEventName,
-			start: newEventStart
-		});
+		if (
+			newEventName !== '' &&
+			newEventStart !== null &&
+			newEventStart !== undefined &&
+			newEventStart !== ''
+		) {
+			events.push({
+				name: newEventName,
+				start: newEventStart
+			});
 
-		previewNewCalendar = false;
-		setTimeout(() => {
-			previewNewCalendar = true;
-		}, 5);
+			previewNewCalendar = false;
+			setTimeout(() => {
+				previewNewCalendar = true;
+			}, 5);
 
-		newEventName = '';
-		newEventStart = '';
+			newEventName = '';
+			newEventStart = '';
+		}
 	}
 </script>
 
@@ -61,7 +68,7 @@
 {/if}
 
 {#if previewNewCalendar}
-	<button class="btn btn-primary m-1" on:click={() => (previewNewCalendar = false)}
+	<button class="btn btn-outline-primary m-1" on:click={() => (previewNewCalendar = false)}
 		>Vorschau für neuen Kalender verbergen</button
 	>
 	<div class="mt-3">
@@ -86,7 +93,7 @@
 		</form>
 	</div>
 {:else}
-	<button class="btn btn-primary m-1" on:click={() => (previewNewCalendar = true)}
+	<button class="btn btn-outline-primary m-1" on:click={() => (previewNewCalendar = true)}
 		>Vorschau für neuen Kalender anzeigen</button
 	>
 {/if}
