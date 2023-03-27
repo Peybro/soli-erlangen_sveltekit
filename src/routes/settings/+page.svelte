@@ -6,13 +6,6 @@
 	let mapsCopy = data.maps?.valueOf() ?? '1';
 </script>
 
-<!-- svelte-ignore a11y-missing-content -->
-<!-- <a
-	href="/"
-	type="button"
-	class="btn-close float-end"
-/> -->
-
 <h2 class="heading">Einstellungen</h2>
 
 <ul>
@@ -20,7 +13,7 @@
 		<a href="/set">Banner einstellen</a>
 	</li>
 	<li>
-		<a href="/dashboard">Dashboard</a>
+		<a href="/verein/zeitung/neu">Neues Vereinsblatt</a>
 	</li>
 	<li>
 		<a href="https://soli-erlangen.de/spiel/" target="_blank">Spielberichtsbogen</a>
