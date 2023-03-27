@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Location from '$lib/Location.svelte';
-	import Trainer from '$lib/Trainer.svelte';
+	import Location from '$lib/components/Location.svelte';
+	import Trainer from '$lib/components/Trainer.svelte';
 
 	export let data;
 </script>

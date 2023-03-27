@@ -116,113 +116,144 @@
 	<div class="alert alert-success" role="alert">Upload erfolgreich!</div>
 {/if}
 
-<div class="card p-3">
-	<form enctype="multipart/form-data" on:submit={(e) => uploadPDF(e)}>
-		<label for="formFile" class="form-label">Neue Zeitung hochladen</label>
+<form enctype="multipart/form-data" on:submit={(e) => uploadPDF(e)}>
+	<label for="formFile" class="form-label">Neue Zeitung hochladen</label>
+	<input
+		class="form-control"
+		type="file"
+		accept=".pdf"
+		id="formFile"
+		name="path"
+		bind:value={newsPaperName}
+	/>
+
+	<div class="p-2 my-2 form-card">
+		<div class="row">
+			<div class="col-1">
+				<span class="from-to">Von</span>
+			</div>
+
+			<div class="col">
+				<label for="seasonFrom">Jahreszeit</label>
+				<select
+					class="form-select"
+					id="seasonFrom"
+					name="seasonFrom"
+					bind:value={seasonFrom}
+					on:change={handleSeasonFromChange}
+				>
+					<option value={0} disabled>auswählen</option>
+					<option value={1}>Frühling</option>
+					<option value={2}>Herbst</option>
+				</select>
+			</div>
+			<div class="col">
+				<label for="yearFrom">Jahr</label>
+				<input
+					class="form-control"
+					type="number"
+					inputmode="numeric"
+					min={new Date().getFullYear()}
+					id="yearFrom"
+					name="yearFrom"
+					bind:value={yearFrom}
+					on:change={handleYearFromChange}
+				/>
+			</div>
+		</div>
+	</div>
+
+	<div class="p-2 my-2 form-card">
+		<div class="row">
+			<div class="col-1">
+				<span class="from-to">Bis</span>
+			</div>
+
+			<div class="col">
+				<label for="seasonTo">Jahreszeit</label>
+				<select
+					class="form-select"
+					id="seasonTo"
+					name="seasonTo"
+					bind:value={seasonTo}
+					on:change={handleSeasonToChange}
+				>
+					<option value={0} disabled>auswählen</option>
+					<option value={1}>Frühling</option>
+					<option value={2}>Herbst</option>
+				</select>
+			</div>
+			<div class="col">
+				<label for="yearTo">Jahr</label>
+				<input
+					class="form-control"
+					type="number"
+					inputmode="numeric"
+					min={new Date().getFullYear()}
+					id="yearTo"
+					name="yearTo"
+					bind:value={yearTo}
+					on:change={handleYearToChange}
+				/>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-input">
+		<label for="password" class="form-label">Passwort</label>
 		<input
 			class="form-control"
-			type="file"
-			accept=".pdf"
-			id="formFile"
-			name="path"
-			bind:value={newsPaperName}
+			type="password"
+			id="password"
+			name="password"
+			placeholder="Passwort"
+			bind:value={password}
 		/>
+	</div>
 
-		<div class="p-2 my-2 card">
-			<div class="row">
-				<div class="col-1">
-					<span class="from-to">Von</span>
-				</div>
+	<button
+		type="submit"
+		class="btn btn-primary my-3"
+		disabled={!(
+			newsPaperName.length > 0 &&
+			newsPaperName.endsWith('.pdf') &&
+			password.length > 0 &&
+			yearTo !== undefined &&
+			yearFrom !== undefined &&
+			yearTo - yearFrom <= 1
+		)}>Hochladen</button
+	>
+</form>
 
-				<div class="col">
-					<label for="seasonFrom">Jahreszeit</label>
-					<select
-						class="form-select"
-						id="seasonFrom"
-						name="seasonFrom"
-						bind:value={seasonFrom}
-						on:change={handleSeasonFromChange}
-					>
-						<option value={0} disabled>auswählen</option>
-						<option value={1}>Frühling</option>
-						<option value={2}>Herbst</option>
-					</select>
-				</div>
-				<div class="col">
-					<label for="yearFrom">Jahr</label>
-					<input
-						class="form-control"
-						type="number"
-						inputmode="numeric"
-						min={new Date().getFullYear()}
-						id="yearFrom"
-						name="yearFrom"
-						bind:value={yearFrom}
-						on:change={handleYearFromChange}
-					/>
-				</div>
-			</div>
-		</div>
+<style lang="scss">
+	form {
+		height: 100%;
+		background: #f1f1f1;
+		padding: 2rem;
+		border-radius: 10px;
 
-		<div class="p-2 my-2 card">
-			<div class="row">
-				<div class="col-1">
-					<span class="from-to">Bis</span>
-				</div>
+		.form-card {
+			// background: #cecece;
+			border: 1px solid #cecece;
+			border-radius: 10px;
+		}
 
-				<div class="col">
-					<label for="seasonTo">Jahreszeit</label>
-					<select
-						class="form-select"
-						id="seasonTo"
-						name="seasonTo"
-						bind:value={seasonTo}
-						on:change={handleSeasonToChange}
-					>
-						<option value={0} disabled>auswählen</option>
-						<option value={1}>Frühling</option>
-						<option value={2}>Herbst</option>
-					</select>
-				</div>
-				<div class="col">
-					<label for="yearTo">Jahr</label>
-					<input
-						class="form-control"
-						type="number"
-						inputmode="numeric"
-						min={new Date().getFullYear()}
-						id="yearTo"
-						name="yearTo"
-						bind:value={yearTo}
-						on:change={handleYearToChange}
-					/>
-				</div>
-			</div>
-		</div>
+		button[type='submit'] {
+			display: block;
+			width: 100%;
+			height: 50px;
+			border: none;
+			background-image: linear-gradient(120deg, #3498db, #8e44ad);
+			background-size: 200%;
+			color: #fff;
+			outline: none;
+			cursor: pointer;
+			transition: 0.5s;
+			border-radius: 10px;
 
-		<div class="form-input">
-			<label for="password" class="form-label">Passwort</label>
-			<input
-				class="form-control"
-				type="password"
-				id="password"
-				name="password"
-				placeholder="Passwort"
-				bind:value={password}
-			/>
-		</div>
-
-		<button
-			type="submit"
-			class="btn btn-primary my-3"
-			disabled={!(
-				newsPaperName.length > 0 &&
-				newsPaperName.endsWith('.pdf') &&
-				password.length > 0 &&
-				yearTo !== undefined &&
-				yearFrom !== undefined &&
-				yearTo - yearFrom <= 1
-			)}>Hochladen</button
-		>
-	</form>
-</div>
+			&:hover {
+				background-position: right;
+			}
+		}
+	}
+</style>

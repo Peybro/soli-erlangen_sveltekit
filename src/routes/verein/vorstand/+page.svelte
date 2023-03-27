@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Vorstand from '$lib/Vorstand.svelte';
-	import Trainer from '$lib/Trainer.svelte';
+	import Vorstand from '$lib/components/Vorstand.svelte';
+	import Trainer from '$lib/components/Trainer.svelte';
 </script>
 
 <!-- <h2 class="heading">Vorstand und Trainer</h2> -->

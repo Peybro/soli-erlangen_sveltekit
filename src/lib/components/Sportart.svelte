@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Carousel from '$lib/Carousel.svelte';
+	import Carousel from '$lib/components/Carousel.svelte';
 
 	export let data: any;
 	export let images: any;

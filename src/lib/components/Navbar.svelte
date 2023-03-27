@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 
 	import { doc, onSnapshot } from 'firebase/firestore';
-	import { db } from '../lib/services/firebase';
+	import { db } from '../services/firebase';
 
 	import { Hamburger } from 'svelte-hamburgers';
 
@@ -37,47 +37,37 @@
 </script>
 
 <svelte:window bind:innerWidth={width} />
+
 <header class="bg-success">
 	<nav class="navbar navbar-expand-lg navbar-dark">
 		<div class="container">
 			<a class="navbar-brand" href="/"
 				><img src="/logo.png" width="40" id="logo" alt="Logo" class="d-inline-block" /> Soli-Erlangen</a
 			>
-			<!-- <button
-				class="navbar-toggler"
-				type="button"
-				data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent"
-			>
-				<span class="navbar-toggler-icon" />
-			</button> -->
 			{#if width < 992}
 				<Hamburger bind:open --color="white" />
 			{/if}
 			{#if open || width >= 992}
-				<div class="" id="navbarSupportedContent">
-					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						{#each ['Zeitung', 'Vorstand', 'Geschichte', 'Kalender'] as link}
-							<li class="nav-item">
-								<a
-									href={`/verein/${link.toLowerCase()}`}
-									class="nav-link"
-									class:active={$page.url.pathname.includes(link.toLowerCase())}
-									on:click={() => (open = false)}
-									>{link}{link === 'Vorstand' ? ' und Trainer' : ''}</a
-								>
-							</li>
-						{/each}
+				<ul class="nav mb-2 mb-lg-0 d-flex" class:flex-column={width < 992}>
+					{#each ['Zeitung', 'Vorstand', 'Geschichte', 'Kalender'] as link}
 						<li class="nav-item">
 							<a
-								target="_blank"
-								rel="noreferrer"
-								href="https://de-de.facebook.com/RalfHaeusinger/"
-								class="nav-link"><i class="bi bi-facebook" /> Aktuelles</a
+								href={`/verein/${link.toLowerCase()}`}
+								class="nav-link text-light"
+								class:active={$page.url.pathname.includes(link.toLowerCase())}
+								on:click={() => (open = false)}>{link}{link === 'Vorstand' ? ' und Trainer' : ''}</a
 							>
 						</li>
-					</ul>
-				</div>
+					{/each}
+					<li class="nav-item bg-primary rounded-pill">
+						<a
+							target="_blank"
+							rel="noreferrer"
+							href="https://de-de.facebook.com/RalfHaeusinger/"
+							class="nav-link text-light"><i class="bi bi-facebook" /> Aktuelles</a
+						>
+					</li>
+				</ul>
 			{/if}
 		</div>
 	</nav>

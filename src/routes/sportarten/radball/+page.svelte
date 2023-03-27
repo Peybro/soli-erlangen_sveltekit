@@ -1,6 +1,6 @@
 <script>
 	import { radballImages } from '$lib/services/imageService';
-	import Sportart from '$lib/Sportart.svelte';
+	import Sportart from '$lib/components/Sportart.svelte';
 
 	export let data;
 </script>

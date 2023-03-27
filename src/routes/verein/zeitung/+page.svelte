@@ -33,14 +33,14 @@
 					</button>
 				</h2>
 				<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-					<div class="accordion-body">
-						<iframe
-							src={url}
-							title={url.split('%2F')[1].split('?')[0].split('.')[0].toString()}
-							height="600px"
-							loading="lazy"
-						/>
-					</div>
+					<!-- <div class="accordion-body"> -->
+					<iframe
+						src={url}
+						title={url.split('%2F')[1].split('?')[0].split('.')[0].toString()}
+						height="600px"
+						loading="lazy"
+					/>
+					<!-- </div> -->
 				</div>
 			{/await}
 		</div>

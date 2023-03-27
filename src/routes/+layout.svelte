@@ -1,10 +1,10 @@
 <script lang="ts">
 	typeof window !== `undefined` && import('bootstrap');
 
-	import Navbar from './Navbar.svelte';
-	import Footer from './Footer.svelte';
-	import Carousel from '$lib/Carousel.svelte';
-	import Trainer from '$lib/Trainer.svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+	import Carousel from '$lib/components/Carousel.svelte';
+	import Trainer from '$lib/components/Trainer.svelte';
 
 	import { page } from '$app/stores';
 
