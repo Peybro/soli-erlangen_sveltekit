@@ -42,7 +42,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark">
 		<div class="container">
 			<a class="navbar-brand" href="/"
-				><img src="/logo.png" width="40" id="logo" alt="Logo" class="d-inline-block" /> Soli-Erlangen</a
+				><img alt="Logo" class="d-inline-block" id="logo" src="/logo.png" width="40" /> Soli-Erlangen</a
 			>
 			{#if width < 992}
 				<Hamburger bind:open --color="white" />
@@ -52,7 +52,7 @@
 					{#each ['Zeitung', 'Vorstand', 'Geschichte', 'Kalender'] as link}
 						<li class="nav-item">
 							<a
-								href={`/verein/${link.toLowerCase()}`}
+								href="/verein/{link.toLowerCase()}"
 								class="nav-link text-light"
 								class:active={$page.url.pathname.includes(link.toLowerCase())}
 								on:click={() => (open = false)}>{link}{link === 'Vorstand' ? ' und Trainer' : ''}</a
@@ -74,7 +74,7 @@
 
 	{#if enabled}
 		<div class="container mt-2">
-			<div class={`alert alert-${bgColor}`} role="alert">
+			<div class="alert alert-{bgColor}" role="alert">
 				<h4 class="alert-heading">{title}</h4>
 				{#each description.split('\n') as line, i}
 					<p class="mb-0">
@@ -85,18 +85,18 @@
 		</div>
 	{/if}
 
-	<div id="sportarten-nav" class="d-flex justify-content-center bg-success">
+	<div class="d-flex justify-content-center bg-success" id="sportarten-nav">
 		<ul class="nav nav-tabs border-0">
 			{#each ['Kunstrad', 'Radball', 'Reigen', 'Gymnastik', 'Kinderturnen', 'Kindertanzen'] as sportart}
 				<li class="nav-item">
 					<a
-						href={`/sportarten/${sportart.toLowerCase()}`}
+						href="/sportarten/{sportart.toLowerCase()}"
 						class="nav-link text-reset"
 						class:active={$page.url.pathname.includes(sportart.toLowerCase())}
 					>
 						<img
-							src={`/stickmen/logo_${sportart.toLowerCase()}_q.png`}
-							alt={`${sportart}-Logo`}
+							src="/stickmen/logo_{sportart.toLowerCase()}_q.png"
+							alt="{sportart}-Logo"
 							width={width < 340 ? '15' : width < 350 ? '20' : '30'}
 						/>
 						{#if width >= 992}

@@ -136,8 +136,9 @@
 				monthView = true;
 				weekView = false;
 				listView = false;
-			}}>Monat</button
-		>
+			}}
+			>Monat
+		</button>
 		<!-- <button
         class="btn btn-dark btn-sm"
         disabled={weekView}
@@ -154,8 +155,9 @@
 				monthView = false;
 				weekView = false;
 				listView = true;
-			}}>Liste</button
-		>
+			}}
+			>Liste
+		</button>
 	</div>
 
 	{#if monthView}
@@ -173,8 +175,9 @@
 					class="btn btn-dark btn-sm"
 					on:click={viewToday}
 					disabled={currentYear === currentDate.getFullYear() &&
-						currentMonth === currentDate.getMonth()}>Heute</button
-				>
+						currentMonth === currentDate.getMonth()}
+					>Heute
+				</button>
 			</div>
 			<h3 class="ms-3">{months[currentMonth]} {currentYear}</h3>
 		</div>

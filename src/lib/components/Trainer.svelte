@@ -70,12 +70,12 @@
 					class:collapsed={open !== person.sport.toLowerCase()}
 					type="button"
 					data-bs-toggle="collapse"
-					data-bs-target={`#trainer-collapse-${i}`}
+					data-bs-target="#trainer-collapse-{i}"
 				>
 					{#if person.icon !== ''}
 						<img
-							src={`/stickmen/logo_${person.sport.toLowerCase()}_q.png`}
-							alt={`${person.sport}-Icon`}
+							src="/stickmen/logo_{person.sport.toLowerCase()}_q.png"
+							alt="{person.sport}-Icon"
 							width="30"
 						/>{' '}
 					{/if}
@@ -83,7 +83,7 @@
 				</button>
 			</h2>
 			<div
-				id={`trainer-collapse-${i}`}
+				id="trainer-collapse-{i}"
 				class="accordion-collapse collapse"
 				class:show={open === person.sport.toLowerCase()}
 				data-bs-parent="#trainerAccordion"
@@ -91,7 +91,7 @@
 				<div class="accordion-body">
 					<h4>{person.name}</h4>
 					{#if person.email.length > 0}
-						<a type="button" class="btn btn-outline-primary me-1" href={`mailto:${person.email}`}>
+						<a type="button" class="btn btn-outline-primary me-1" href="mailto:{person.email}">
 							<i class="bi bi-envelope" />
 						</a>
 					{/if}
@@ -99,14 +99,14 @@
 						<a
 							type="button"
 							class="btn btn-outline-primary me-1"
-							href={`tel:+49${person.telefon.substring(1, person.telefon.length).replace(' ', '')}`}
+							href="tel:+49{person.telefon.substring(1, person.telefon.length).replace(' ', '')}"
 						>
 							<i class="bi bi-telephone" />
 							{person.telefon}
 						</a>
 					{/if}
 					{#if person.mobil.length > 0}
-						<a type="button" class="btn btn-outline-primary" href={`https://wa.me/${person.mobil}`}>
+						<a type="button" class="btn btn-outline-primary" href="https://wa.me/{person.mobil}">
 							<i class="bi bi-whatsapp" />
 						</a>
 					{/if}

@@ -91,9 +91,9 @@
 
 <div class="calendar">
 	<div class="calendar-header">
-		<button on:click={handlePrevMonth} class="btn"><i class="bi bi-chevron-left" /></button>
-		<button on:click={handleNextMonth} class="btn"><i class="bi bi-chevron-right" /></button>
-		<button on:click={setToday} class="setTodayBtn btn btn-outline-secondary">Heute</button>
+		<button class="btn" on:click={handlePrevMonth}><i class="bi bi-chevron-left" /></button>
+		<button class="btn" on:click={handleNextMonth}><i class="bi bi-chevron-right" /></button>
+		<button class="setTodayBtn btn btn-outline-secondary" on:click={setToday}>Heute</button>
 		<h3 class="currentDisplay">{months[currentMonth]} {currentYear}</h3>
 	</div>
 	<div class="calendar-grid">

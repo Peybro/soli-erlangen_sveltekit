@@ -5,7 +5,7 @@
 	export let text = true;
 </script>
 
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel slide" data-bs-ride="carousel" id="carouselExampleCaptions">
 	{#if indicators}
 		<div class="carousel-indicators">
 			{#each images as _, i}
@@ -55,6 +55,6 @@
 
 <style>
 	/* .carousel-item {
-		height: 600px;
-	} */
+        height: 600px;
+    } */
 </style>

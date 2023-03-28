@@ -13,7 +13,6 @@ import kindertanzen1 from '$lib/Bilder/Kindertanzen/20230212_155300.jpg';
 import kindertanzen2 from '$lib/Bilder/Kindertanzen/20230212_155532.jpg';
 
 // Kinderturnen
-
 // Kunstrad
 import kunstrad1 from '$lib/Bilder/Kunstrad/20191115_200539.jpg';
 import kunstrad2 from '$lib/Bilder/Kunstrad/G20191116-165945_109E72_img1.jpg';
@@ -24,15 +23,11 @@ import radballBankÜbung from '$lib/Bilder/Radball/radball_bankübung.jpg';
 import radballEcke from '$lib/Bilder/Radball/radball_ecke.jpg';
 import radballGenerationen from '$lib/Bilder/Radball/radball_generationen.jpg';
 import radballMoritzUndTobi2 from '$lib/Bilder/Radball/radball_moritz-und-tobi-2.jpg';
-import radballMoritzUndTobi3 from '$lib/Bilder/Radball/radball_moritz-und-tobi-3.jpg';
-import radballMoritzUndTobi4 from '$lib/Bilder/Radball/radball_moritz-und-tobi.jpg';
 import radballMoritzUndRemo from '$lib/Bilder/Radball/radball_moritz-und-remo.jpg';
 import radballAnpfiff from '$lib/Bilder/Radball/radball_anpfiff.jpg';
 
 // Reigen
 import reigen1 from '$lib/Bilder/Reigen/20230212_155921.jpg';
-import reigen2 from '$lib/Bilder/Reigen/20230212_160040.jpg';
-import reigen3 from '$lib/Bilder/Reigen/20230212_160044.jpg';
 import reigen4 from '$lib/Bilder/Reigen/signal-2022-11-21-06-26-40-868.jpg';
 
 const gymnastikImages: ImageObject[] = [];

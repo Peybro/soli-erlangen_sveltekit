@@ -1,9 +1,19 @@
 <script lang="ts">
 	import { getDownloadURL } from 'firebase/storage';
+
 	export let data;
 </script>
 
-<h2 class="heading">Zeitung</h2>
+<div class="row">
+	<div class="col"><h2 class="heading">Zeitung</h2></div>
+	{#if data.loggedIn}
+		<div class="col-4">
+			<a href="/verein/zeitung/neu" role="button" class="btn btn-primary mb-2 float-end"
+				>Neue Zeitung</a
+			>
+		</div>
+	{/if}
+</div>
 
 {#await data.files}
 	<div class="alert alert-info" role="alert">Lade PDF Dateien...</div>
@@ -59,7 +69,7 @@
 			<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
 				<div class="accordion-body">
 					<div class="grid">
-						{#each [...res.items].reverse() as itemRef}
+						{#each [...res.items].reverse().slice(1) as itemRef}
 							{#await getDownloadURL(itemRef)}
 								<div class="alert alert-info" role="alert">Lade ältere Ausgaben...</div>
 							{:then url}

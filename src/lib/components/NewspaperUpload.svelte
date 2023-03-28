@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+	import { signInWithEmailAndPassword } from 'firebase/auth';
 	import { ref, uploadBytes } from 'firebase/storage';
-	import { storage } from '$lib/services/firebase';
+	import { auth, storage } from '$lib/services/firebase';
 
 	let newsPaperName = '';
 
@@ -59,9 +59,9 @@
 		uploadError = false;
 		loading = true;
 
-		let file = event.target[0].files[0];
+		const file = event.target[0].files[0];
 		const uploadRef = ref(storage, `Vereinsblatt/soli_info_${yearFrom}_${seasonFrom}.pdf`);
-		const auth = getAuth();
+		// const auth = getAuth();
 
 		await signInWithEmailAndPassword(auth, 'vorstand@soli-erlangen.de', password || '')
 			.then(async (userCredential) => {
@@ -117,14 +117,14 @@
 {/if}
 
 <form enctype="multipart/form-data" on:submit={(e) => uploadPDF(e)}>
-	<label for="formFile" class="form-label">Neue Zeitung hochladen</label>
+	<label class="form-label" for="formFile">Neue Zeitung hochladen</label>
 	<input
-		class="form-control"
-		type="file"
 		accept=".pdf"
+		bind:value={newsPaperName}
+		class="form-control"
 		id="formFile"
 		name="path"
-		bind:value={newsPaperName}
+		type="file"
 	/>
 
 	<div class="p-2 my-2 form-card">
@@ -136,13 +136,13 @@
 			<div class="col">
 				<label for="seasonFrom">Jahreszeit</label>
 				<select
+					bind:value={seasonFrom}
 					class="form-select"
 					id="seasonFrom"
 					name="seasonFrom"
-					bind:value={seasonFrom}
 					on:change={handleSeasonFromChange}
 				>
-					<option value={0} disabled>auswählen</option>
+					<option disabled value={0}>auswählen</option>
 					<option value={1}>Frühling</option>
 					<option value={2}>Herbst</option>
 				</select>
@@ -150,14 +150,14 @@
 			<div class="col">
 				<label for="yearFrom">Jahr</label>
 				<input
+					bind:value={yearFrom}
 					class="form-control"
-					type="number"
+					id="yearFrom"
 					inputmode="numeric"
 					min={new Date().getFullYear()}
-					id="yearFrom"
 					name="yearFrom"
-					bind:value={yearFrom}
 					on:change={handleYearFromChange}
+					type="number"
 				/>
 			</div>
 		</div>
@@ -172,13 +172,13 @@
 			<div class="col">
 				<label for="seasonTo">Jahreszeit</label>
 				<select
+					bind:value={seasonTo}
 					class="form-select"
 					id="seasonTo"
 					name="seasonTo"
-					bind:value={seasonTo}
 					on:change={handleSeasonToChange}
 				>
-					<option value={0} disabled>auswählen</option>
+					<option disabled value={0}>auswählen</option>
 					<option value={1}>Frühling</option>
 					<option value={2}>Herbst</option>
 				</select>
@@ -186,33 +186,32 @@
 			<div class="col">
 				<label for="yearTo">Jahr</label>
 				<input
+					bind:value={yearTo}
 					class="form-control"
-					type="number"
+					id="yearTo"
 					inputmode="numeric"
 					min={new Date().getFullYear()}
-					id="yearTo"
 					name="yearTo"
-					bind:value={yearTo}
 					on:change={handleYearToChange}
+					type="number"
 				/>
 			</div>
 		</div>
 	</div>
 
 	<div class="form-input">
-		<label for="password" class="form-label">Passwort</label>
+		<label class="form-label" for="password">Passwort</label>
 		<input
+			bind:value={password}
 			class="form-control"
-			type="password"
 			id="password"
 			name="password"
 			placeholder="Passwort"
-			bind:value={password}
+			type="password"
 		/>
 	</div>
 
 	<button
-		type="submit"
 		class="btn btn-primary my-3"
 		disabled={!(
 			newsPaperName.length > 0 &&
@@ -221,8 +220,10 @@
 			yearTo !== undefined &&
 			yearFrom !== undefined &&
 			yearTo - yearFrom <= 1
-		)}>Hochladen</button
-	>
+		)}
+		type="submit"
+		>Hochladen
+	</button>
 </form>
 
 <style lang="scss">

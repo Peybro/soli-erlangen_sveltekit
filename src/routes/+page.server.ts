@@ -1,3 +1,4 @@
+import type { Actions } from './$types';
 import {
 	gymnastikImages,
 	kindertanzenImages,
@@ -35,3 +36,9 @@ export const load = async ({ cookies }) => {
 		mapSelection: cookies.get('mapSelection')
 	};
 };
+
+export const actions = {
+	logout: async ({ cookies }) => {
+		cookies.delete('loggedIn');
+	}
+} satisfies Actions;

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { PageData } from './$types';
+
 	export let data: PageData;
 
 	let mapsCopy = data.maps?.valueOf() ?? '1';
@@ -10,7 +11,7 @@
 
 <ul>
 	<li>
-		<a href="/set">Banner einstellen</a>
+		<a href="/banner">Banner einstellen</a>
 	</li>
 	<li>
 		<a href="/verein/zeitung/neu">Neues Vereinsblatt</a>
@@ -20,12 +21,12 @@
 	</li>
 </ul>
 
-<form method="post" action="?/saveCookie" class="border p-2" use:enhance>
+<form action="?/saveCookie" class="border p-2" method="post" use:enhance>
 	<div class="alert alert-warning d-flex flex-column" role="alert">
 		<img
+			alt="Kekse"
 			id="cookies"
 			src="https://www.pngall.com/wp-content/uploads/2016/07/Cookie-PNG-File.png"
-			alt="Kekse"
 		/>
 		<div class="fw-bold">
 			Das Speichern dieser Einstellung wird einen internen Cookie setzen damit sich die Seite an
@@ -40,24 +41,24 @@
 	<div class="mx-2">
 		<div class="form-check">
 			<input
-				class="form-check-input"
-				type="radio"
-				name="mapSelection"
-				id="flexRadioDefault1"
 				checked={data.maps === '1'}
+				class="form-check-input"
+				id="flexRadioDefault1"
+				name="mapSelection"
 				on:change={() => (mapsCopy = '1')}
+				type="radio"
 				value="1"
 			/>
 			<label class="form-check-label" for="flexRadioDefault1"> OpenStreet Maps </label>
 		</div>
 		<div class="form-check">
 			<input
-				class="form-check-input"
-				type="radio"
-				name="mapSelection"
-				id="flexRadioDefault0"
 				checked={data.maps === '0'}
+				class="form-check-input"
+				id="flexRadioDefault0"
+				name="mapSelection"
 				on:change={() => (mapsCopy = '0')}
+				type="radio"
 				value="0"
 			/>
 			<label class="form-check-label" for="flexRadioDefault0"> Google Maps </label>
@@ -67,12 +68,12 @@
 		</div>
 		<div class="form-check">
 			<input
-				class="form-check-input"
-				type="radio"
-				name="mapSelection"
-				id="flexRadioDefault2"
 				checked={data.maps === '2'}
+				class="form-check-input"
+				id="flexRadioDefault2"
+				name="mapSelection"
 				on:change={() => (mapsCopy = '2')}
+				type="radio"
 				value="2"
 			/>
 			<label class="form-check-label" for="flexRadioDefault2">
@@ -81,7 +82,7 @@
 		</div>
 	</div>
 
-	<button type="submit" class="btn btn-primary mt-2">Speichern</button>
+	<button class="btn btn-primary mt-2" type="submit">Speichern</button>
 </form>
 
 <style>

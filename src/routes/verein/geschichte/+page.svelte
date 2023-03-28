@@ -12,8 +12,8 @@
 		standesgemäße Herkunft nachweisen zu können.
 	</p>
 
-	<img class="float-end ms-4 d-none d-md-block" src="/archiv_01.jpg" alt="Historische Radballer" />
-	<img class="d-block d-md-none w-100" src="/archiv_01.jpg" alt="Historische Radballer" />
+	<img alt="Historische Radballer" class="float-end ms-4 d-none d-md-block" src="/archiv_01.jpg" />
+	<img alt="Historische Radballer" class="d-block d-md-none w-100" src="/archiv_01.jpg" />
 	<p>
 		Im Jahr 1903 beschloss eine Gruppe von Arbeiterradfahrern, die schon während ihrer Freizeit mit
 		ihren Rädern durch die Lande fuhren und denen der Beitritt in den Bürgerlichen Vereinen verwehrt

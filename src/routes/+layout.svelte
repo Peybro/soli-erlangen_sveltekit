@@ -1,21 +1,12 @@
 <script lang="ts">
 	typeof window !== `undefined` && import('bootstrap');
 
+	import type { ActionData, PageData } from './$types';
+	import { enhance } from '$app/forms';
+
 	import Navbar from '$lib/components/Navbar.svelte';
-	import Footer from '$lib/components/Footer.svelte';
-	import Carousel from '$lib/components/Carousel.svelte';
-	import Trainer from '$lib/components/Trainer.svelte';
 
-	import { page } from '$app/stores';
-
-	import {
-		gymnastikImages,
-		kindertanzenImages,
-		kinderturnenImages,
-		kunstradImages,
-		radballImages,
-		reigenImages
-	} from '../lib/services/imageService';
+	export let data: PageData;
 </script>
 
 <!-- <Carousel
@@ -41,7 +32,39 @@
 		</main>
 	</div>
 
-	<Footer />
+	<footer class="bg-success">
+		<div class="container d-flex">
+			<a class="nav-item text-light text-decoration-none mx-2" href="/impressum">Impressum</a>
+
+			<div class="container d-flex justify-content-end">
+				<div class="row">
+					<div class="col">
+						{#if data.loggedIn}
+							<form method="POST" action="/?/logout" use:enhance>
+								<button
+									type="submit"
+									class="border-0 bg-success nav-item text-light text-decoration-none"
+									>Logout</button
+								>
+							</form>
+						{:else}
+							<a class="nav-item text-light text-decoration-none" href="/login">Login</a>
+						{/if}
+					</div>
+					<div class="col">
+						<a class="nav-item text-light text-decoration-none" href="/settings">Einstellungen</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<style>
+		footer {
+			padding: 1rem;
+			grid-row: 2;
+		}
+	</style>
 </div>
 
 <style global>

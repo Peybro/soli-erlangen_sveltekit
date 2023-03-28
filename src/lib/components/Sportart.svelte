@@ -7,7 +7,7 @@
 
 <svelte:head>
 	<title>{data.sport}</title>
-	<meta name="description" content={data.info[0].toString()} />
+	<meta content={data.info[0].toString()} name="description" />
 </svelte:head>
 
 <h2 class="heading">{data.sport}</h2>

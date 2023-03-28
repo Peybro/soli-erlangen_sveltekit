@@ -9,7 +9,7 @@
 	<li class="nav-item">
 		<!-- svelte-ignore a11y-missing-attribute -->
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<a role="button" class="nav-link" class:active={showTanzen} on:click={() => (showTanzen = true)}
+		<a class="nav-link" class:active={showTanzen} on:click={() => (showTanzen = true)} role="button"
 			>Kindertanzen</a
 		>
 	</li>
@@ -17,10 +17,10 @@
 		<!-- svelte-ignore a11y-missing-attribute -->
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<a
-			role="button"
 			class="nav-link"
 			class:active={!showTanzen}
-			on:click={() => (showTanzen = false)}>Alles andere</a
+			on:click={() => (showTanzen = false)}
+			role="button">Alles andere</a
 		>
 	</li>
 </ul>
@@ -37,7 +37,8 @@
 				marginwidth="0"
 				src="https://www.openstreetmap.org/export/embed.html?bbox=11.020459234714508%2C49.55173486467105%2C11.02493852376938%2C49.553311381684125&amp;layer=mapnik&amp;marker=49.55252312953809%2C11.022698879241943"
 				style="border:0;width:100%"
-			/><br /><small
+			/>
+			<br /><small
 				><a
 					href="https://www.openstreetmap.org/?mlat=49.55252&amp;mlon=11.02270#map=19/49.55252/11.02270"
 					>Größere Karte anzeigen</a
@@ -80,7 +81,8 @@
 			marginwidth="0"
 			src="https://www.openstreetmap.org/export/embed.html?bbox=10.96291780471802%2C49.590111892923375%2C10.96739709377289%2C49.5916871709354&amp;layer=mapnik&amp;marker=49.59089953828854%2C10.965157449245453"
 			style="border:0;width:100%"
-		/><br /><small
+		/>
+		<br /><small
 			><a
 				href="https://www.openstreetmap.org/?mlat=49.59090&amp;mlon=10.96516#map=19/49.59090/10.96516"
 				>Größere Karte anzeigen</a

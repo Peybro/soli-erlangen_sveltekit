@@ -3,9 +3,9 @@ import { fail } from '@sveltejs/kit';
 import { z } from 'zod';
 import { superValidate } from 'sveltekit-superforms/server';
 
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { db } from '$lib/services/firebase';
+import { auth, db } from '$lib/services/firebase';
 
 // See https://zod.dev/?id=primitives for schema syntax
 const schema = z.object({
@@ -63,7 +63,7 @@ export const actions = {
 		}
 
 		// TODO: Do something with the validated data
-		const auth = getAuth();
+		// const auth = getAuth();
 		const pw = form.data.password;
 		let wrongPasswordError = false;
 

@@ -54,8 +54,8 @@
 		<p>Wir arbeiten daran eine schönere Methode zu benzuten... :)</p>
 	</div>
 	<button class="btn btn-primary m-1" on:click={() => (allowGCal = true)}
-		>Google Kalender anzeigen</button
-	>
+		>Google Kalender anzeigen
+	</button>
 {:else}
 	<iframe
 		src="https://calendar.google.com/calendar/embed?src=u1fg6jtjks9g4dqoel0tqsnrkc%40group.calendar.google.com&ctz=Europe%2FBerlin"
@@ -69,8 +69,8 @@
 
 {#if previewNewCalendar}
 	<button class="btn btn-outline-primary m-1" on:click={() => (previewNewCalendar = false)}
-		>Vorschau für neuen Kalender verbergen</button
-	>
+		>Vorschau für neuen Kalender verbergen
+	</button>
 	<div class="mt-3">
 		<Calendar bind:events />
 		<form class="mt-2 p-2 border rounded" on:submit={(e) => addNewEvent(e)}>
@@ -94,8 +94,8 @@
 	</div>
 {:else}
 	<button class="btn btn-outline-primary m-1" on:click={() => (previewNewCalendar = true)}
-		>Vorschau für neuen Kalender anzeigen</button
-	>
+		>Vorschau für neuen Kalender anzeigen
+	</button>
 {/if}
 
 <style>
