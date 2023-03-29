@@ -8,6 +8,8 @@
 	export let form: { error: string; success: boolean; message: string };
 
 	let showUploader = false;
+
+	$: sportart = $page.params.sportart[0].toUpperCase() + $page.params.sportart.slice(1);
 </script>
 
 {#if form && form.error}
@@ -26,7 +28,7 @@
 <div class="row">
 	<div class="col">
 		<h2 class="heading">
-			{$page.params.sportart[0].toUpperCase() + $page.params.sportart.slice(1)}
+			{sportart}
 		</h2>
 	</div>
 	{#if data.loggedIn}
@@ -41,11 +43,7 @@
 {#if showUploader && data.loggedIn}
 	<div class="card p-2 mb-3">
 		<form action="?/uploadImages" method="POST" enctype="multipart/form-data" use:enhance>
-			<input
-				type="hidden"
-				name="category"
-				value={$page.params.sportart[0].toUpperCase() + $page.params.sportart.slice(1)}
-			/>
+			<input type="hidden" name="category" value={sportart} />
 			<label class="form-label" for="formFile">Bild(er) auswählen</label>
 			<input
 				accept="image/png, image/jpeg"
@@ -61,15 +59,17 @@
 	</div>
 {/if}
 
-{#await listAll(ref(storage, `Bilder/${$page.params.sportart[0].toUpperCase() + $page.params.sportart.slice(1)}`))}
-	<h3>Lade Bilder...</h3>
-{:then images}
-	{#if images.items.length === 0}
-		<div class="alert alert-warning" role="alert">
-			Es sind keine Bilder für {$page.params.sportart[0].toUpperCase() +
-				$page.params.sportart.slice(1)} vorhanden.
+{#await listAll(ref(storage, `Bilder/${sportart}`))}
+	<div class="alert alert-info" role="alert">
+		<div class="d-flex justify-content-between">
+			Bilder werden geladen...
+			<div class="spinner-border" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</div>
 		</div>
-	{:else}
+	</div>
+{:then images}
+	{#if images.items.length > 0}
 		<div id="carouselExampleIndicators" class="carousel slide">
 			<div class="carousel-indicators">
 				{#each images.items as _, i}
@@ -90,11 +90,7 @@
 							{#if data.loggedIn}
 								<form action="?/deleteImage" method="post" use:enhance>
 									<input type="hidden" name="image" value={image} />
-									<input
-										type="hidden"
-										name="category"
-										value={$page.params.sportart[0].toUpperCase() + $page.params.sportart.slice(1)}
-									/>
+									<input type="hidden" name="category" value={sportart} />
 									<button type="submit" class="btn-close" aria-label="Close" />
 								</form>
 							{/if}
@@ -122,6 +118,11 @@
 				<span class="visually-hidden">Next</span>
 			</button>
 		</div>
+		<!-- {:else}
+		<div class="alert alert-warning" role="alert">
+			Es sind keine Bilder für {$page.params.sportart[0].toUpperCase() +
+				$page.params.sportart.slice(1)} vorhanden.
+		</div> -->
 	{/if}
 {:catch error}
 	<div class="alert alert-danger" role="alert">
@@ -129,6 +130,19 @@
 		<p>{error.message}</p>
 	</div>
 {/await}
+
+<h3>{data.infos.filter((s) => s.sport === sportart)[0].subheading}</h3>
+
+{#each data.infos.filter((s) => s.sport === sportart)[0].info as item}
+	{#if typeof item === 'string'}
+		<p>{item}</p>
+	{:else}
+		<h4>{item.subitem}</h4>
+		{#each item.text as text}
+			<p>{text}</p>
+		{/each}
+	{/if}
+{/each}
 
 <style lang="scss">
 	.carousel-item form {
