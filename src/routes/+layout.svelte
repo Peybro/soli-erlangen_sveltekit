@@ -1,27 +1,12 @@
 <script lang="ts">
 	typeof window !== `undefined` && import('bootstrap');
 
-	import type { ActionData, PageData } from './$types';
 	import { enhance } from '$app/forms';
 
 	import Navbar from '$lib/components/Navbar.svelte';
 
-	export let data: PageData;
+	export let data;
 </script>
-
-<!-- <Carousel
-	images={[
-		...gymnastikImages,
-		...kindertanzenImages,
-		...kinderturnenImages,
-		...kunstradImages,
-		...radballImages,
-		...reigenImages
-	]}
-	controls={false}
-	indicators={false}
-	text={false}
-/> -->
 
 <Navbar />
 
@@ -44,8 +29,8 @@
 								<button
 									type="submit"
 									class="border-0 bg-success nav-item text-light text-decoration-none"
-									>Logout</button
-								>
+									>Logout
+								</button>
 							</form>
 						{:else}
 							<a class="nav-item text-light text-decoration-none" href="/login">Login</a>
@@ -60,7 +45,7 @@
 	</footer>
 </div>
 
-<style lang="scss" global>
+<style global lang="scss">
 	@import './../../node_modules/bootstrap/dist/css/bootstrap.css';
 	@import './../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 
@@ -90,6 +75,11 @@
 	.heading {
 		text-decoration: underline;
 		text-decoration-color: #198754;
+	}
+
+	.invalid {
+		color: red;
+		margin-top: 0.3rem;
 	}
 
 	.special-btn {

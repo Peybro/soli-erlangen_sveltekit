@@ -1,18 +1,16 @@
-import type { Actions, PageServerLoad } from './$types';
 import {
-	getAuth,
+	browserSessionPersistence,
 	setPersistence,
-	signInWithEmailAndPassword,
-	browserSessionPersistence
+	signInWithEmailAndPassword
 } from 'firebase/auth';
 import { auth } from '$lib/services/firebase';
 import { redirect } from '@sveltejs/kit';
 
-export const load = (async ({ cookies }) => {
+export const load = async ({ cookies }) => {
 	return {
 		loggedIn: cookies.get('loggedIn') === 'true' ? true : false
 	};
-}) satisfies PageServerLoad;
+};
 
 export const actions = {
 	login: async ({ request, cookies, url }) => {
@@ -56,4 +54,4 @@ export const actions = {
 			};
 		}
 	}
-} satisfies Actions;
+};

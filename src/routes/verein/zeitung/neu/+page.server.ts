@@ -1,12 +1,9 @@
-import type { Actions, PageServerLoad } from './$types';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { ref, uploadBytes } from 'firebase/storage';
-import { auth, storage } from '$lib/services/firebase';
-import { fail } from '@sveltejs/kit';
+import { storage } from '$lib/services/firebase';
 
-export const load = (async () => {
+export const load = async () => {
 	return {};
-}) satisfies PageServerLoad;
+};
 
 export const actions = {
 	uploadPDF: async ({ request }) => {
@@ -17,7 +14,6 @@ export const actions = {
 		const seasonTo = data.get('seasonTo');
 		const yearFrom = data.get('yearFrom');
 		const yearTo = data.get('yearTo');
-		// const password = data.get('password');
 
 		if (
 			!file ||
@@ -35,9 +31,6 @@ export const actions = {
 			!yearTo ||
 			yearTo === undefined ||
 			yearTo === ''
-			// || !password ||
-			// password === undefined ||
-			// password === ''
 		) {
 			return { success: false, error: 'Bitte gib alle Felder an.' };
 		}
@@ -83,17 +76,6 @@ export const actions = {
 				`Vereinsblatt/soli_info_${yearFrom.toString()}_${seasonFrom.toString()}.pdf`
 			);
 
-			// return await signInWithEmailAndPassword(
-			// 	auth,
-			// 	'vorstand@soli-erlangen.de',
-			// 	// password.toString() ?? ''
-			// 	'soli-erlangen'
-			// )
-			// 	.then(async (userCredential) => {
-			// 		//? Signed in
-			// 		// const user = userCredential.user;
-			// 		// console.log(user);
-
 			return await uploadBytes(uploadRef, new Uint8Array(await file.arrayBuffer()), {
 				contentType: 'application/pdf'
 			})
@@ -106,16 +88,6 @@ export const actions = {
 						error: 'Irgendetwas ist schief gelaufen... Bitte probier es nochmal!'
 					};
 				});
-			// })
-			// .catch((error) => {
-			// 	// console.log(error);
-			// 	// return fail(400, { password, incorrect: true });
-			// 	return {
-			// 		success: false,
-			// 		// error: 'Falsches Passwort!'
-			// 		error: error.message
-			// 	};
-			// });
 		} else {
 			return {
 				success: false,
@@ -123,4 +95,4 @@ export const actions = {
 			};
 		}
 	}
-} satisfies Actions;
+};

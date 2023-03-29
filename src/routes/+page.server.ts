@@ -1,4 +1,3 @@
-import type { Actions } from './$types';
 import {
 	gymnastikImages,
 	kindertanzenImages,
@@ -41,4 +40,4 @@ export const actions = {
 	logout: async ({ cookies }) => {
 		cookies.delete('loggedIn');
 	}
-} satisfies Actions;
+};

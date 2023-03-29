@@ -1,6 +1,4 @@
-import type { Actions, PageServerLoad } from './$types';
-
-export const load = (async ({ cookies }) => {
+export const load = async ({ cookies }) => {
 	return {
 		maps:
 			cookies.get('mapSelection') &&
@@ -10,7 +8,7 @@ export const load = (async ({ cookies }) => {
 				? cookies.get('mapSelection')
 				: '1'
 	};
-}) satisfies PageServerLoad;
+};
 
 export const actions = {
 	saveCookie: async ({ cookies, request }) => {
@@ -21,4 +19,4 @@ export const actions = {
 
 		return { success: true };
 	}
-} satisfies Actions;
+};

@@ -1,10 +1,9 @@
 <script lang="ts">
-	import type { ActionData, PageData } from './$types';
 	import { enhance } from '$app/forms';
 	import LoginFirst from '$lib/components/LoginFirst.svelte';
 
-	export let data: PageData;
-	export let form: ActionData;
+	export let data;
+	export let form;
 
 	let newsPaperName = '';
 	let seasonFrom: number;
@@ -119,18 +118,6 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- <div class="form-input">
-			<label class="form-label" for="password">Passwort</label>
-			<input
-				class="form-control"
-				id="password"
-				name="password"
-				placeholder="Passwort"
-				type="password"
-				required
-			/>
-		</div> -->
 
 		<button class="special-btn" type="submit">Hochladen</button>
 	</form>

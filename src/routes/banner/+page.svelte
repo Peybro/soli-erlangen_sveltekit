@@ -1,9 +1,8 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
 	import LoginFirst from '$lib/components/LoginFirst.svelte';
 
-	export let data: PageData;
+	export let data;
 
 	// Client API:
 	const { form, errors, constraints, enhance, delayed } = superForm(data.form);
@@ -24,7 +23,7 @@
 				name="enabled"
 				type="checkbox"
 			/>
-			<label class="" for="enabledCheckBox">Anzeigen?</label>
+			<label class="form-label" for="enabledCheckBox">Anzeigen?</label>
 		</div>
 
 		<div class="form-input">
@@ -44,7 +43,7 @@
             {/if} -->
 		</div>
 		<div class="form-input">
-			<label class="" for="descriptionInput">Beschreibung</label>
+			<label class="form-label" for="descriptionInput">Beschreibung</label>
 			<textarea
 				bind:value={$form.description}
 				class=""
@@ -56,7 +55,7 @@
 		</div>
 
 		<div class="form-input">
-			<label class="" for="bgColorSelect">Hintergrundfarbe</label>
+			<label class="form-label" for="bgColorSelect">Hintergrundfarbe</label>
 			<select bind:value={$form.bgColor} class="" id="bgColorSelect" name="bgColor">
 				<option value="success">Grün</option>
 				<option value="warning">Gelb</option>
@@ -65,21 +64,6 @@
 			</select>
 		</div>
 
-		<!-- <div class="form-input">
-		<label class="" for="passwordInput">Passwort</label>
-		<input
-			{...$constraints.password}
-			bind:value={$form.password}
-			class=""
-			data-invalid={$errors.password}
-			id="passwordInput"
-			name="password"
-			type="password"
-		/>
-		{#if $errors.password}
-			<small class="invalid">{$errors.password}</small>
-		{/if}
-	</div> -->
 		<button class="special-btn" type="submit"
 			>Speichern
 			{#if $delayed}...{/if}
@@ -121,11 +105,6 @@
 
 			label {
 			}
-		}
-
-		.invalid {
-			color: red;
-			margin-top: 0.3rem;
 		}
 	}
 </style>

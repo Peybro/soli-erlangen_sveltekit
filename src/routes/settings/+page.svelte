@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { PageData } from './$types';
 
-	export let data: PageData;
+	export let data;
 
 	let mapsCopy = data.maps?.valueOf() ?? '1';
 </script>
