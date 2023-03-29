@@ -94,28 +94,28 @@ export const actions = {
 			// 		// const user = userCredential.user;
 			// 		// console.log(user);
 
-					return await uploadBytes(uploadRef, new Uint8Array(await file.arrayBuffer()), {
-						contentType: 'application/pdf'
-					})
-						.then((snapshot) => {
-							return { success: true };
-						})
-						.catch((error) => {
-							return {
-								success: false,
-								error: 'Irgendetwas ist schief gelaufen... Bitte probier es nochmal!'
-							};
-						});
-				// })
-				// .catch((error) => {
-				// 	// console.log(error);
-				// 	// return fail(400, { password, incorrect: true });
-				// 	return {
-				// 		success: false,
-				// 		// error: 'Falsches Passwort!'
-				// 		error: error.message
-				// 	};
-				// });
+			return await uploadBytes(uploadRef, new Uint8Array(await file.arrayBuffer()), {
+				contentType: 'application/pdf'
+			})
+				.then((snapshot) => {
+					return { success: true };
+				})
+				.catch((error) => {
+					return {
+						success: false,
+						error: 'Irgendetwas ist schief gelaufen... Bitte probier es nochmal!'
+					};
+				});
+			// })
+			// .catch((error) => {
+			// 	// console.log(error);
+			// 	// return fail(400, { password, incorrect: true });
+			// 	return {
+			// 		success: false,
+			// 		// error: 'Falsches Passwort!'
+			// 		error: error.message
+			// 	};
+			// });
 		} else {
 			return {
 				success: false,

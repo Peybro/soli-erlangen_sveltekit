@@ -71,22 +71,22 @@ export const actions = {
 		// 		//? Signed in
 		// 		// const user = userCredential.user;
 		// 		// console.log(user);
-				await setDoc(doc(db, 'banner', 'settings'), {
-					enabled: form.data.enabled,
-					title: form.data.title,
-					description: form.data.description,
-					bgColor: form.data.bgColor
-				});
-			// })
-			// .catch((error) => {
-			// 	// wrongPasswordError = true;
-			// 	// errors.code = error.code;
-			// 	form.valid = false;
-			// 	// form.errors.password = [
-			// 	// 	// error.message
-			// 	// 	'Falsches Passwort!'
-			// 	// ];
-			// });
+		await setDoc(doc(db, 'banner', 'settings'), {
+			enabled: form.data.enabled,
+			title: form.data.title,
+			description: form.data.description,
+			bgColor: form.data.bgColor
+		});
+		// })
+		// .catch((error) => {
+		// 	// wrongPasswordError = true;
+		// 	// errors.code = error.code;
+		// 	form.valid = false;
+		// 	// form.errors.password = [
+		// 	// 	// error.message
+		// 	// 	'Falsches Passwort!'
+		// 	// ];
+		// });
 
 		// if (wrongPasswordError) return fail(403, { form });
 

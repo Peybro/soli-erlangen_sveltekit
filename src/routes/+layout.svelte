@@ -32,7 +32,7 @@
 		</main>
 	</div>
 
-	<footer class="bg-success">
+	<footer class="bg-success py-3">
 		<div class="container d-flex">
 			<a class="nav-item text-light text-decoration-none mx-2" href="/impressum">Impressum</a>
 
@@ -58,16 +58,9 @@
 			</div>
 		</div>
 	</footer>
-
-	<style>
-		footer {
-			padding: 1rem;
-			grid-row: 2;
-		}
-	</style>
 </div>
 
-<style global>
+<style lang="scss" global>
 	@import './../../node_modules/bootstrap/dist/css/bootstrap.css';
 	@import './../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 

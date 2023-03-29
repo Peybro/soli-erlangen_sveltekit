@@ -48,7 +48,7 @@
 		</div>
 	{/if}
 
-	<form method="POST" action="?/uploadPDF" enctype="multipart/form-data" use:enhance>
+	<form class="p-2" method="POST" action="?/uploadPDF" enctype="multipart/form-data" use:enhance>
 		<label class="form-label" for="formFile">Neue Zeitung hochladen</label>
 		<input
 			accept=".pdf"
@@ -142,7 +142,6 @@
 	form {
 		height: 100%;
 		background: #f1f1f1;
-		padding: 2rem;
 		border-radius: 10px;
 
 		.form-card {

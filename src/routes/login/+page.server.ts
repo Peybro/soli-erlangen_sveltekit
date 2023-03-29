@@ -1,5 +1,10 @@
 import type { Actions, PageServerLoad } from './$types';
-import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
+import {
+	getAuth,
+	setPersistence,
+	signInWithEmailAndPassword,
+	browserSessionPersistence
+} from 'firebase/auth';
 import { auth } from '$lib/services/firebase';
 import { redirect } from '@sveltejs/kit';
 
@@ -24,7 +29,7 @@ export const actions = {
 			password !== undefined &&
 			password !== ''
 		) {
-			await setPersistence(auth, browserSessionPersistence)
+			await setPersistence(auth, browserSessionPersistence);
 			return await signInWithEmailAndPassword(auth, email.toString(), password.toString())
 				.then(async (userCredential) => {
 					//? Signed in
