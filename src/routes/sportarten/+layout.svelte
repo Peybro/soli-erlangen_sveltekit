@@ -16,4 +16,4 @@
 	</div>
 </div>
 
-<Location maps={data.mapSelection || '1'} showTanzen={$page.url.pathname.includes('tanzen')} />
+<Location maps={data.maps || '1'} showTanzen={$page.url.pathname.includes('tanzen')} />
