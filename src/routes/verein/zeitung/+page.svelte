@@ -9,7 +9,7 @@
 	{#if data.loggedIn}
 		<div class="col-4">
 			<a href="/verein/zeitung/neu" role="button" class="btn btn-primary mb-2 float-end"
-				>Neue Zeitung</a
+				><i class="bi bi-file-earmark-plus" /> Neue Zeitung</a
 			>
 		</div>
 	{/if}

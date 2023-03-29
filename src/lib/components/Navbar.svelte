@@ -39,42 +39,47 @@
 <svelte:window bind:innerWidth={width} />
 
 <header class="bg-success">
-	<nav class="navbar navbar-expand-lg navbar-dark">
+	<nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="light">
 		<div class="container">
 			<a class="navbar-brand" href="/"
 				><img alt="Logo" class="d-inline-block" id="logo" src="/logo.png" width="40" /> Soli-Erlangen</a
 			>
 			{#if width < 992}
-				<Hamburger bind:open --color="white" />
+				<div style="margin-right: -12px;">
+					<Hamburger bind:open --color="white" />
+				</div>
 			{/if}
 			{#if open || width >= 992}
-				<ul class="nav mb-2 mb-lg-0 d-flex" class:flex-column={width < 992}>
-					{#each ['Zeitung', 'Vorstand', 'Geschichte', 'Kalender'] as link}
+				<div class="navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav ms-auto">
+						{#each ['Zeitung', 'Vorstand', 'Geschichte', 'Kalender'] as link}
+							<li class="nav-item">
+								<a
+									href="/verein/{link.toLowerCase()}"
+									class="nav-link"
+									class:active={$page.url.pathname.includes(link.toLowerCase())}
+									on:click={() => (open = false)}
+									>{link}{link === 'Vorstand' ? ' und Trainer' : ''}</a
+								>
+							</li>
+						{/each}
 						<li class="nav-item">
 							<a
-								href="/verein/{link.toLowerCase()}"
-								class="nav-link text-light"
-								class:active={$page.url.pathname.includes(link.toLowerCase())}
-								on:click={() => (open = false)}>{link}{link === 'Vorstand' ? ' und Trainer' : ''}</a
+								target="_blank"
+								rel="noreferrer"
+								href="https://de-de.facebook.com/RalfHaeusinger/"
+								class="nav-link"><i class="bi bi-facebook" /> Aktuelles</a
 							>
 						</li>
-					{/each}
-					<li class="nav-item bg-primary rounded-pill">
-						<a
-							target="_blank"
-							rel="noreferrer"
-							href="https://de-de.facebook.com/RalfHaeusinger/"
-							class="nav-link text-light"><i class="bi bi-facebook" /> Aktuelles</a
-						>
-					</li>
-				</ul>
+					</div>
+				</div>
 			{/if}
 		</div>
 	</nav>
 
-	{#if enabled}
+	{#if enabled && !open}
 		<div class="container mt-2">
-			<div class="alert alert-{bgColor}" role="alert">
+			<div class="alert alert-{bgColor} w-100" role="alert">
 				<h4 class="alert-heading">{title}</h4>
 				{#each description.split('\n') as line, i}
 					<p class="mb-0">
@@ -85,7 +90,7 @@
 		</div>
 	{/if}
 
-	<div class="d-flex justify-content-center bg-success" id="sportarten-nav">
+	<div class="sticky-top d-flex justify-content-center" id="sportarten-nav">
 		<ul class="nav nav-tabs border-0">
 			{#each ['Kunstrad', 'Radball', 'Reigen', 'Gymnastik', 'Kinderturnen', 'Kindertanzen'] as sportart}
 				<li class="nav-item">
