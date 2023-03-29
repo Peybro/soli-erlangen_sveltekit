@@ -16,9 +16,21 @@
 		<li>
 			<a href="/verein/zeitung/neu">Neues Vereinsblatt</a>
 		</li>
+		<li>
+			Bilder bearbeiten:
+			<ul>
+				{#each ['Kunstrad', 'Radball', 'Reigen', 'Gymnastik', 'Kinderturnen', 'Kindertanzen'] as sport}
+					<li>
+						<a href="/bilder/{sport}">{sport}</a>
+					</li>
+				{/each}
+			</ul>
+		</li>
 	{/if}
 	<li>
-		<a href="https://soli-erlangen.de/spiel/" target="_blank">Spielberichtsbogen</a>
+		<a href="https://soli-erlangen.de/spiel/" target="_blank"
+			>Spielberichtsbogen (Icons funktionieren gerade nicht)</a
+		>
 	</li>
 </ul>
 

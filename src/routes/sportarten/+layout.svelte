@@ -8,6 +8,12 @@
 
 <div class="row">
 	<div class="col">
+		{#if data.loggedIn}
+			<a
+				href="/bilder{$page.url.pathname.split('/').slice(-1).toString()}"
+				class="btn btn-primary mb-4">Bilder bearbeiten</a
+			>
+		{/if}
 		<slot />
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-12">
