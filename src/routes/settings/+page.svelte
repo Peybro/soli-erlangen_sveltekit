@@ -10,12 +10,14 @@
 <h2 class="heading">Einstellungen</h2>
 
 <ul>
-	<li>
-		<a href="/banner">Banner einstellen</a>
-	</li>
-	<li>
-		<a href="/verein/zeitung/neu">Neues Vereinsblatt</a>
-	</li>
+	{#if data.loggedIn}
+		<li>
+			<a href="/banner">Banner einstellen</a>
+		</li>
+		<li>
+			<a href="/verein/zeitung/neu">Neues Vereinsblatt</a>
+		</li>
+	{/if}
 	<li>
 		<a href="https://soli-erlangen.de/spiel/" target="_blank">Spielberichtsbogen</a>
 	</li>

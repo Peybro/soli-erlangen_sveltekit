@@ -17,7 +17,7 @@ export const actions = {
 		const seasonTo = data.get('seasonTo');
 		const yearFrom = data.get('yearFrom');
 		const yearTo = data.get('yearTo');
-		const password = data.get('password');
+		// const password = data.get('password');
 
 		if (
 			!file ||
@@ -34,10 +34,10 @@ export const actions = {
 			yearFrom === '' ||
 			!yearTo ||
 			yearTo === undefined ||
-			yearTo === '' ||
-			!password ||
-			password === undefined ||
-			password === ''
+			yearTo === ''
+			// || !password ||
+			// password === undefined ||
+			// password === ''
 		) {
 			return { success: false, error: 'Bitte gib alle Felder an.' };
 		}
@@ -86,7 +86,8 @@ export const actions = {
 			return await signInWithEmailAndPassword(
 				auth,
 				'vorstand@soli-erlangen.de',
-				password.toString() ?? ''
+				// password.toString() ?? ''
+				'soli-erlangen'
 			)
 				.then(async (userCredential) => {
 					//? Signed in
@@ -107,11 +108,12 @@ export const actions = {
 						});
 				})
 				.catch((error) => {
-					console.log(error);
+					// console.log(error);
 					// return fail(400, { password, incorrect: true });
 					return {
 						success: false,
-						error: 'Falsches Passwort!'
+						// error: 'Falsches Passwort!'
+						error: error.message
 					};
 				});
 		} else {

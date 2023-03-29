@@ -12,8 +12,8 @@ const schema = z.object({
 	enabled: z.boolean().default(false),
 	title: z.string().min(6).default('[Titel]'),
 	description: z.string().min(6).optional().default('[Beschreibung]]'),
-	bgColor: z.string().default('success'),
-	password: z.string()
+	bgColor: z.string().default('success')
+	// password: z.string()
 });
 
 export const load = (async (event) => {
@@ -63,11 +63,10 @@ export const actions = {
 		}
 
 		// TODO: Do something with the validated data
-		// const auth = getAuth();
-		const pw = form.data.password;
-		let wrongPasswordError = false;
+		// const pw = form.data.password;
+		// let wrongPasswordError = false;
 
-		await signInWithEmailAndPassword(auth, 'vorstand@soli-erlangen.de', pw)
+		await signInWithEmailAndPassword(auth, 'vorstand@soli-erlangen.de', 'soli-erlangen')
 			.then(async (userCredential) => {
 				//? Signed in
 				// const user = userCredential.user;
@@ -80,16 +79,16 @@ export const actions = {
 				});
 			})
 			.catch((error) => {
-				wrongPasswordError = true;
+				// wrongPasswordError = true;
 				// errors.code = error.code;
 				form.valid = false;
-				form.errors.password = [
-					// error.message
-					'Falsches Passwort!'
-				];
+				// form.errors.password = [
+				// 	// error.message
+				// 	'Falsches Passwort!'
+				// ];
 			});
 
-		if (wrongPasswordError) return fail(403, { form });
+		// if (wrongPasswordError) return fail(403, { form });
 
 		// Yep, return { form } here too
 		return { form };

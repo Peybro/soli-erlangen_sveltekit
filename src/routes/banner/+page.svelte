@@ -8,62 +8,63 @@
 	const { form, errors, constraints, enhance, delayed } = superForm(data.form);
 </script>
 
-<div class="alert alert-{$form.bgColor}" class:muted={!$form.enabled} role="alert">
-	<h4 class="alert-heading">{$form.title}</h4>
-	<p>{$form.description}</p>
-</div>
-
-<form method="POST" use:enhance>
-	<div class="form-checkbox">
-		<input
-			bind:checked={$form.enabled}
-			class=""
-			id="enabledCheckBox"
-			name="enabled"
-			type="checkbox"
-		/>
-		<label class="" for="enabledCheckBox">Anzeigen?</label>
+{#if data.loggedIn}
+	<div class="alert alert-{$form.bgColor}" class:muted={!$form.enabled} role="alert">
+		<h4 class="alert-heading">{$form.title}</h4>
+		<p>{$form.description}</p>
 	</div>
 
-	<div class="form-input">
-		<label class="input-label" for="titleInput">Überschrift</label>
-		<input
-			{...$constraints.title}
-			bind:value={$form.title}
-			class=""
-			data-invalid={$errors.title}
-			id="titleInput"
-			name="title"
-			placeholder="Titel"
-			type="text"
-		/>
-		<!-- {#if $errors.title}
+	<form method="POST" use:enhance>
+		<div class="form-checkbox">
+			<input
+				bind:checked={$form.enabled}
+				class=""
+				id="enabledCheckBox"
+				name="enabled"
+				type="checkbox"
+			/>
+			<label class="" for="enabledCheckBox">Anzeigen?</label>
+		</div>
+
+		<div class="form-input">
+			<label class="input-label" for="titleInput">Überschrift</label>
+			<input
+				{...$constraints.title}
+				bind:value={$form.title}
+				class=""
+				data-invalid={$errors.title}
+				id="titleInput"
+				name="title"
+				placeholder="Titel"
+				type="text"
+			/>
+			<!-- {#if $errors.title}
                 <small class="invalid">{$errors.title}</small>
             {/if} -->
-	</div>
-	<div class="form-input">
-		<label class="" for="descriptionInput">Beschreibung</label>
-		<textarea
-			bind:value={$form.description}
-			class=""
-			id="descriptionInput"
-			name="description"
-			placeholder="Beschreibung"
-			rows="4"
-		/>
-	</div>
+		</div>
+		<div class="form-input">
+			<label class="" for="descriptionInput">Beschreibung</label>
+			<textarea
+				bind:value={$form.description}
+				class=""
+				id="descriptionInput"
+				name="description"
+				placeholder="Beschreibung"
+				rows="4"
+			/>
+		</div>
 
-	<div class="form-input">
-		<label class="" for="bgColorSelect">Hintergrundfarbe</label>
-		<select bind:value={$form.bgColor} class="" id="bgColorSelect" name="bgColor">
-			<option value="success">Grün</option>
-			<option value="warning">Gelb</option>
-			<option value="danger">Rot</option>
-			<option value="primary">Blau</option>
-		</select>
-	</div>
+		<div class="form-input">
+			<label class="" for="bgColorSelect">Hintergrundfarbe</label>
+			<select bind:value={$form.bgColor} class="" id="bgColorSelect" name="bgColor">
+				<option value="success">Grün</option>
+				<option value="warning">Gelb</option>
+				<option value="danger">Rot</option>
+				<option value="primary">Blau</option>
+			</select>
+		</div>
 
-	<div class="form-input">
+		<!-- <div class="form-input">
 		<label class="" for="passwordInput">Passwort</label>
 		<input
 			{...$constraints.password}
@@ -77,12 +78,17 @@
 		{#if $errors.password}
 			<small class="invalid">{$errors.password}</small>
 		{/if}
+	</div> -->
+		<button class="" type="submit"
+			>Speichern
+			{#if $delayed}...{/if}
+		</button>
+	</form>
+{:else}
+	<div class="alert alert-warning" role="alert">
+		<div>Bitte erst <a href="/login">einloggen</a></div>
 	</div>
-	<button class="" type="submit"
-		>Speichern
-		{#if $delayed}...{/if}
-	</button>
-</form>
+{/if}
 
 <style lang="scss">
 	.muted {
