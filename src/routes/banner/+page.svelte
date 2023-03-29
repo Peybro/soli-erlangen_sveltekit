@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
+	import LoginFirst from '$lib/components/LoginFirst.svelte';
 
 	export let data: PageData;
 
@@ -79,15 +80,13 @@
 			<small class="invalid">{$errors.password}</small>
 		{/if}
 	</div> -->
-		<button class="" type="submit"
+		<button class="special-btn" type="submit"
 			>Speichern
 			{#if $delayed}...{/if}
 		</button>
 	</form>
 {:else}
-	<div class="alert alert-warning" role="alert">
-		<div>Bitte erst <a href="/login">einloggen</a></div>
-	</div>
+	<LoginFirst />
 {/if}
 
 <style lang="scss">
@@ -121,24 +120,6 @@
 			}
 
 			label {
-			}
-		}
-
-		button[type='submit'] {
-			display: block;
-			width: 100%;
-			height: 50px;
-			border: none;
-			background-image: linear-gradient(120deg, #3498db, #8e44ad);
-			background-size: 200%;
-			color: #fff;
-			outline: none;
-			cursor: pointer;
-			transition: 0.5s;
-			border-radius: 10px;
-
-			&:hover {
-				background-position: right;
 			}
 		}
 

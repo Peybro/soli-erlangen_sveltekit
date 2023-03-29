@@ -10,11 +10,11 @@ const config = {
 		// vitePreprocess(),
 
 		preprocess(),
-	// 	{
-	// 	scss: {
-	// 		prependData: `@import './src/style.scss';`
-	// 	}
-	// }
+		// 	{
+		// 	scss: {
+		// 		prependData: `@import './src/style.scss';`
+		// 	}
+		// }
 
 	kit: {
 		adapter: adapter()

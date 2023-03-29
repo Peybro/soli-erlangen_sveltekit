@@ -98,4 +98,22 @@
 		text-decoration: underline;
 		text-decoration-color: #198754;
 	}
+
+	.special-btn {
+		display: block;
+		width: 100%;
+		height: 50px;
+		border: none;
+		background-image: linear-gradient(120deg, #3498db, #8e44ad);
+		background-size: 200%;
+		color: #fff;
+		outline: none;
+		cursor: pointer;
+		transition: 0.5s;
+		border-radius: 10px;
+
+		&:hover {
+			background-position: right;
+		}
+	}
 </style>

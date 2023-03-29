@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { ActionData, PageData } from './$types';
 	import { enhance } from '$app/forms';
+	import LoginFirst from '$lib/components/LoginFirst.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -131,12 +132,10 @@
 			/>
 		</div> -->
 
-		<button class="btn btn-primary my-3" type="submit">Hochladen</button>
+		<button class="special-btn" type="submit">Hochladen</button>
 	</form>
 {:else}
-	<div class="alert alert-warning" role="alert">
-		<div>Bitte erst <a href="/login">einloggen</a></div>
-	</div>
+	<LoginFirst />
 {/if}
 
 <style lang="scss">
@@ -150,24 +149,6 @@
 			// background: #cecece;
 			border: 1px solid #cecece;
 			border-radius: 10px;
-		}
-
-		button[type='submit'] {
-			display: block;
-			width: 100%;
-			height: 50px;
-			border: none;
-			background-image: linear-gradient(120deg, #3498db, #8e44ad);
-			background-size: 200%;
-			color: #fff;
-			outline: none;
-			cursor: pointer;
-			transition: 0.5s;
-			border-radius: 10px;
-
-			&:hover {
-				background-position: right;
-			}
 		}
 	}
 </style>
