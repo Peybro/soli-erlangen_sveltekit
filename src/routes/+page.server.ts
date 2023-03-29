@@ -41,6 +41,5 @@ export const load = async ({ cookies }) => {
 export const actions = {
 	logout: async ({ cookies }) => {
 		cookies.delete('loggedIn');
-		auth;
 	}
 };
