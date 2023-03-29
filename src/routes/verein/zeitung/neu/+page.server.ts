@@ -83,16 +83,16 @@ export const actions = {
 				`Vereinsblatt/soli_info_${yearFrom.toString()}_${seasonFrom.toString()}.pdf`
 			);
 
-			return await signInWithEmailAndPassword(
-				auth,
-				'vorstand@soli-erlangen.de',
-				// password.toString() ?? ''
-				'soli-erlangen'
-			)
-				.then(async (userCredential) => {
-					//? Signed in
-					// const user = userCredential.user;
-					// console.log(user);
+			// return await signInWithEmailAndPassword(
+			// 	auth,
+			// 	'vorstand@soli-erlangen.de',
+			// 	// password.toString() ?? ''
+			// 	'soli-erlangen'
+			// )
+			// 	.then(async (userCredential) => {
+			// 		//? Signed in
+			// 		// const user = userCredential.user;
+			// 		// console.log(user);
 
 					return await uploadBytes(uploadRef, new Uint8Array(await file.arrayBuffer()), {
 						contentType: 'application/pdf'
@@ -106,16 +106,16 @@ export const actions = {
 								error: 'Irgendetwas ist schief gelaufen... Bitte probier es nochmal!'
 							};
 						});
-				})
-				.catch((error) => {
-					// console.log(error);
-					// return fail(400, { password, incorrect: true });
-					return {
-						success: false,
-						// error: 'Falsches Passwort!'
-						error: error.message
-					};
-				});
+				// })
+				// .catch((error) => {
+				// 	// console.log(error);
+				// 	// return fail(400, { password, incorrect: true });
+				// 	return {
+				// 		success: false,
+				// 		// error: 'Falsches Passwort!'
+				// 		error: error.message
+				// 	};
+				// });
 		} else {
 			return {
 				success: false,

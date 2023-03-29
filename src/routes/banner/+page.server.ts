@@ -66,27 +66,27 @@ export const actions = {
 		// const pw = form.data.password;
 		// let wrongPasswordError = false;
 
-		await signInWithEmailAndPassword(auth, 'vorstand@soli-erlangen.de', 'soli-erlangen')
-			.then(async (userCredential) => {
-				//? Signed in
-				// const user = userCredential.user;
-				// console.log(user);
+		// await signInWithEmailAndPassword(auth, 'vorstand@soli-erlangen.de', 'soli-erlangen')
+		// 	.then(async (userCredential) => {
+		// 		//? Signed in
+		// 		// const user = userCredential.user;
+		// 		// console.log(user);
 				await setDoc(doc(db, 'banner', 'settings'), {
 					enabled: form.data.enabled,
 					title: form.data.title,
 					description: form.data.description,
 					bgColor: form.data.bgColor
 				});
-			})
-			.catch((error) => {
-				// wrongPasswordError = true;
-				// errors.code = error.code;
-				form.valid = false;
-				// form.errors.password = [
-				// 	// error.message
-				// 	'Falsches Passwort!'
-				// ];
-			});
+			// })
+			// .catch((error) => {
+			// 	// wrongPasswordError = true;
+			// 	// errors.code = error.code;
+			// 	form.valid = false;
+			// 	// form.errors.password = [
+			// 	// 	// error.message
+			// 	// 	'Falsches Passwort!'
+			// 	// ];
+			// });
 
 		// if (wrongPasswordError) return fail(403, { form });
 

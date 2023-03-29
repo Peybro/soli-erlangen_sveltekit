@@ -1,3 +1,6 @@
+import { listAll, ref } from 'firebase/storage';
+import { storage } from '$lib/services/firebase';
+
 export const load = async () => {
 	return {
 		sport: 'Gymnastik',
@@ -32,6 +35,7 @@ export const load = async () => {
 					'Gymnastik ist eine anspruchsvolle und vielseitige Sportart, die den ganzen Körper fordert und dabei auch die geistige Stärke verbessert. Sie ist für alle Altersklassen geeignet und bietet eine Vielzahl von Disziplinen, die unterschiedliche Fähigkeiten erfordern. Wenn Sie Interesse an Gymnastik haben, gibt es zahlreiche Möglichkeiten, um diese Sportart zu erlernen und auszuüben.'
 				]
 			}
-		]
+		], 
+		pictures: listAll(ref(storage, 'Bilder/Gymnastik'))
 	};
 };
