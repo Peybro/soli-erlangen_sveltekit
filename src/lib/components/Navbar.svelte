@@ -45,9 +45,7 @@
 				><img alt="Logo" class="d-inline-block" id="logo" src="/logo.png" width="40" /> Soli-Erlangen</a
 			>
 			{#if width < 992}
-				<div style="margin-right: -12px;">
-					<Hamburger bind:open --color="white" />
-				</div>
+				<Hamburger bind:open --color="white" />
 			{/if}
 			{#if open || width >= 992}
 				<div class="navbar-collapse" id="navbarNavAltMarkup">
