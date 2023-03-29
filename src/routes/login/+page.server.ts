@@ -6,11 +6,7 @@ import {
 import { auth } from '$lib/services/firebase';
 import { redirect } from '@sveltejs/kit';
 
-export const load = async ({ cookies }) => {
-	return {
-		loggedIn: cookies.get('loggedIn') === 'true' ? true : false
-	};
-};
+export const load = async () => {};
 
 export const actions = {
 	login: async ({ request, cookies, url }) => {
