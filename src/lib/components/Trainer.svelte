@@ -1,4 +1,6 @@
 <script lang="ts">
+	export let open: string;
+
 	async function getTrainer() {
 		const response = await fetch('/api/trainer', {
 			method: 'POST',

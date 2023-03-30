@@ -88,7 +88,7 @@
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-12">
 		<h2 class="heading">Kontakt:</h2>
-		<Trainer />
+		<Trainer open="none" />
 	</div>
 
 	<Location maps={data.mapSelection || '1'} />

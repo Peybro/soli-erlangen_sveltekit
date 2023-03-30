@@ -34,7 +34,7 @@
 	{#if data.loggedIn}
 		<div class="col-4">
 			<button class="btn btn-primary mb-2 float-end" on:click={() => (showUploader = !showUploader)}
-				><i class="bi bi-file-earmark-plus" /> Neue Bilder</button
+				><i class="bi bi-file-earmark-plus" />Neue Bilder</button
 			>
 		</div>
 	{/if}

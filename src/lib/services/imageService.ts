@@ -8,11 +8,11 @@ type ImageObject = {
 // Gymnastik
 
 // Kindertanzen
-// TODO (alle Bilder aus Verzeichnis auf einmal): const kindertanzenImages = Object.keys(import.meta.glob("$lib/Bilder/Kindertanzen/*.jpg")).map(image=>{src:image})
 import kindertanzen1 from '$lib/Bilder/Kindertanzen/20230212_155300.jpg';
 import kindertanzen2 from '$lib/Bilder/Kindertanzen/20230212_155532.jpg';
 
 // Kinderturnen
+
 // Kunstrad
 import kunstrad1 from '$lib/Bilder/Kunstrad/20191115_200539.jpg';
 import kunstrad2 from '$lib/Bilder/Kunstrad/G20191116-165945_109E72_img1.jpg';
