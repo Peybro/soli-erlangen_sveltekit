@@ -19,18 +19,13 @@
 		listenForUpdates();
 	});
 
-	// TODO fix ts-lint error
 	function listenForUpdates() {
 		onSnapshot(doc(db, 'banner', 'settings'), (doc) => {
 			if (doc.data() !== undefined) {
-				// @ts-ignore
-				enabled = doc.data().enabled;
-				// @ts-ignore
-				title = doc.data().title;
-				// @ts-ignore
-				description = doc.data().description;
-				// @ts-ignore
-				bgColor = doc.data().bgColor;
+				enabled = doc.data()?.enabled ?? false;
+				title = doc.data()?.title ?? '';
+				description = doc.data()?.description ?? '';
+				bgColor = doc.data()?.bgColor ?? 'primary';
 			}
 		});
 	}

@@ -1,14 +1,5 @@
 import { setPersistence, inMemoryPersistence } from 'firebase/auth';
 import { auth } from '$lib/services/firebase';
-import {
-	gymnastikImages,
-	kindertanzenImages,
-	kinderturnenImages,
-	kunstradImages,
-	radballImages,
-	reigenImages
-} from '../lib/services/imageService';
-
 /**
  * Shuffles array
  * @param {Array} a items An array containing the items.
@@ -23,17 +14,7 @@ function shuffle(a: any[]) {
 }
 
 export const load = async ({ cookies }) => {
-	const imageArray = shuffle([
-		...gymnastikImages,
-		...kindertanzenImages,
-		...kinderturnenImages,
-		...kunstradImages,
-		...radballImages,
-		...reigenImages
-	]);
-
 	return {
-		imageArray,
 		mapSelection: cookies.get('mapSelection')
 	};
 };
