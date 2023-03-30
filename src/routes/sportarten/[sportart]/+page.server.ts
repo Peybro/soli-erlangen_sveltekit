@@ -1,6 +1,5 @@
 import { ref, uploadBytes, deleteObject } from 'firebase/storage';
 import { storage } from '$lib/services/firebase';
-import { redirect } from '@sveltejs/kit';
 
 export const load = async () => {
 	return {};

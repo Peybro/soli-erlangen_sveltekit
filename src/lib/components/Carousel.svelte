@@ -5,13 +5,13 @@
 	export let text = true;
 </script>
 
-<div class="carousel slide" data-bs-ride="carousel" id="carouselExampleCaptions">
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
 	{#if indicators}
 		<div class="carousel-indicators">
 			{#each images as _, i}
 				<button
 					type="button"
-					data-bs-target="#carouselExampleCaptions"
+					data-bs-target="#carouselExampleAutoplaying"
 					data-bs-slide-to={i}
 					class:active={i === 0}
 				/>
@@ -35,7 +35,7 @@
 		<button
 			class="carousel-control-prev"
 			type="button"
-			data-bs-target="#carouselExampleCaptions"
+			data-bs-target="#carouselExampleAutoplaying"
 			data-bs-slide="prev"
 		>
 			<span class="carousel-control-prev-icon" aria-hidden="true" />
@@ -44,7 +44,7 @@
 		<button
 			class="carousel-control-next"
 			type="button"
-			data-bs-target="#carouselExampleCaptions"
+			data-bs-target="#carouselExampleAutoplaying"
 			data-bs-slide="next"
 		>
 			<span class="carousel-control-next-icon" aria-hidden="true" />

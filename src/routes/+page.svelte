@@ -1,96 +1,63 @@
 <script lang="ts">
-	import { listAll, ref, getDownloadURL } from 'firebase/storage';
-	import { storage } from '$lib/services/firebase';
-	import { page } from '$app/stores';
-
 	import Carousel from '$lib/components/Carousel.svelte';
 	import Location from '$lib/components/Location.svelte';
 	import Trainer from '$lib/components/Trainer.svelte';
 
 	export let data;
+
+	/**
+	 * Shuffles array
+	 * @param {Array} a items An array containing the items.
+	 */
+	function shuffle(a: any[]) {
+		const shuffled = a
+			.map((value) => ({ value, sort: Math.random() }))
+			.sort((a, b) => a.sort - b.sort)
+			.map(({ value }) => value);
+
+		return shuffled;
+	}
+
+	function formatArray(
+		inArray: string[]
+	): { src: string; alt: string; title: string; desc: string }[] {
+		return inArray.map((item) => {
+			return {
+				src: item,
+				alt: '',
+				title: '',
+				desc: ''
+			};
+		});
+	}
+
+	async function getBilder() {
+		const response = await fetch('/api/bilder', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'image/jpg'
+			}
+		});
+
+		return await response.json();
+	}
 </script>
 
 <div class="row">
 	<div class="col">
-		<!-- {#await listAll(ref(storage, `Bilder/`))}
+		{#await getBilder()}
 			<div class="alert alert-info" role="alert">
 				<div class="d-flex justify-content-between">
-					Bilder werden geladen...
+					Lade Bilder...
 					<div class="spinner-border" role="status">
 						<span class="visually-hidden">Loading...</span>
 					</div>
 				</div>
 			</div>
 		{:then images}
-			{#each images.prefixes as folder}
-				{#await listAll(ref(storage, `Bilder/${folder.toString().split('/').at(-1)}`))}
-					<div class="alert alert-info" role="alert">
-						<div class="d-flex justify-content-between">
-							Bilder werden geladen...
-							<div class="spinner-border" role="status">
-								<span class="visually-hidden">Loading...</span>
-							</div>
-						</div>
-					</div>
-				{:then imagesinFolder}
-					{#if imagesinFolder.items.length > 0}
-						<div id="carouselExampleIndicators" class="carousel slide">
-							<div class="carousel-indicators">
-								{#each imagesinFolder.items as _, i}
-									<button
-										type="button"
-										data-bs-target="#carouselExampleIndicators"
-										data-bs-slide-to={i}
-										class:active={i === 0}
-									/>
-								{/each}
-							</div>
-							<div class="carousel-inner">
-								{#each imagesinFolder.items as imageInFolder, i}
-									{#await getDownloadURL(imageInFolder)}
-										<h2>Lade Bild...</h2>
-									{:then url}
-										<div class="carousel-item" class:active={i === 0} data-bs-interval="4000">
-											<img src={url} class="d-block w-100" alt={url} />
-										</div>
-									{/await}
-								{/each}
-							</div>
-							<button
-								class="carousel-control-prev"
-								type="button"
-								data-bs-target="#carouselExampleIndicators"
-								data-bs-slide="prev"
-							>
-								<span class="carousel-control-prev-icon" />
-								<span class="visually-hidden">Previous</span>
-							</button>
-							<button
-								class="carousel-control-next"
-								type="button"
-								data-bs-target="#carouselExampleIndicators"
-								data-bs-slide="next"
-							>
-								<span class="carousel-control-next-icon" />
-								<span class="visually-hidden">Next</span>
-							</button>
-						</div>
-					{:else}
-						<div class="alert alert-warning" role="alert">
-							Es sind keine Bilder für {$page.params.sportart[0].toUpperCase() +
-								$page.params.sportart.slice(1)} vorhanden.
-						</div>
-					{/if}
-				{/await}
-			{/each}
-		{:catch error}
-			<div class="alert alert-danger" role="alert">
-				<h4 class="alert-heading">Es ist ein Fehler aufgetreten.</h4>
-				<p>{error.message}</p>
-			</div>
-		{/await} -->
+			<Carousel images={shuffle(formatArray(images.flat()))} indicators={false} />
+		{/await}
 
-		<Carousel images={data.imageArray} />
 		<div class="fs-6 mt-3">
 			<p>
 				<span class="fw-bold">Herzlich Willkommen auf der Website der Solidarität Erlangen!</span> Wir

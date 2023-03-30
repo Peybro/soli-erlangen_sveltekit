@@ -1,3 +1,5 @@
+import { setPersistence, inMemoryPersistence } from 'firebase/auth';
+import { auth } from '$lib/services/firebase';
 import {
 	gymnastikImages,
 	kindertanzenImages,
@@ -6,8 +8,6 @@ import {
 	radballImages,
 	reigenImages
 } from '../lib/services/imageService';
-import { auth } from '$lib/services/firebase';
-import firebase from 'firebase/app';
 
 /**
  * Shuffles array
@@ -40,6 +40,7 @@ export const load = async ({ cookies }) => {
 
 export const actions = {
 	logout: async ({ cookies }) => {
+		await setPersistence(auth, inMemoryPersistence);
 		cookies.delete('loggedIn');
 	}
 };

@@ -2,7 +2,7 @@ import { browserSessionPersistence, setPersistence } from 'firebase/auth';
 import { auth } from '$lib/services/firebase';
 
 export const load = async ({ cookies }) => {
-	if (cookies.get('loggedIn') === 'true') {
+	if (cookies.get('loggedIn') && cookies.get('loggedIn') === 'true') {
 		await setPersistence(auth, browserSessionPersistence);
 	}
 

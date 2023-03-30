@@ -1,5 +1,6 @@
 import {
 	browserSessionPersistence,
+	browserLocalPersistence,
 	setPersistence,
 	signInWithEmailAndPassword
 } from 'firebase/auth';
@@ -23,7 +24,7 @@ export const actions = {
 			password !== undefined &&
 			password !== ''
 		) {
-			await setPersistence(auth, browserSessionPersistence);
+			await setPersistence(auth, browserLocalPersistence);
 			return await signInWithEmailAndPassword(auth, email.toString(), password.toString())
 				.then(async (userCredential) => {
 					//? Signed in
