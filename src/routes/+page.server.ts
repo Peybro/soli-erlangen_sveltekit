@@ -1,4 +1,4 @@
-import { setPersistence, inMemoryPersistence } from 'firebase/auth';
+import { setPersistence, signOut, inMemoryPersistence } from 'firebase/auth';
 import { auth } from '$lib/services/firebase';
 /**
  * Shuffles array
@@ -21,7 +21,13 @@ export const load = async ({ cookies }) => {
 
 export const actions = {
 	logout: async ({ cookies }) => {
-		await setPersistence(auth, inMemoryPersistence);
-		cookies.delete('loggedIn');
+		await signOut(auth)
+			.then(async () => {
+				await setPersistence(auth, inMemoryPersistence);
+				cookies.delete('loggedIn');
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	}
 };
