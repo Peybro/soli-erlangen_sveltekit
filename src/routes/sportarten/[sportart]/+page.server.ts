@@ -23,7 +23,7 @@ export const actions = {
 			const uploadRef = ref(storage, `Bilder/${category}/${file.name}`);
 
 			return await uploadBytes(uploadRef, new Uint8Array(await file.arrayBuffer()), {
-				contentType: `image/${file.toString().split('.').at(-1)}`
+				contentType: `image/${file.name.split('.').at(-1)}`
 			})
 				.then((snapshot) => {
 					console.log(file.name + ' wurde hochgeladen!');
