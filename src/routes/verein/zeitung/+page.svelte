@@ -6,7 +6,7 @@
 
 <div class="row">
 	<div class="col"><h2 class="heading">Zeitung</h2></div>
-	{#if data.loggedIn}
+	{#if data.user}
 		<div class="col-4">
 			<a href="/verein/zeitung/neu" role="button" class="btn btn-primary mb-2 float-end"
 				><i class="bi bi-file-earmark-plus" /> Neue Zeitung</a

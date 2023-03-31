@@ -31,7 +31,7 @@
 			{sportart}
 		</h2>
 	</div>
-	{#if data.loggedIn}
+	{#if data.user}
 		<div class="col-4">
 			<button class="btn btn-primary mb-2 float-end" on:click={() => (showUploader = !showUploader)}
 				><i class="bi bi-file-earmark-plus" />Neue Bilder</button
@@ -40,7 +40,7 @@
 	{/if}
 </div>
 
-{#if showUploader && data.loggedIn}
+{#if showUploader && data.user}
 	<div class="card p-2 mb-3">
 		<form action="?/uploadImages" method="POST" enctype="multipart/form-data" use:enhance>
 			<input type="hidden" name="category" value={sportart} />
@@ -87,7 +87,7 @@
 						<h2>Lade Bild...</h2>
 					{:then url}
 						<div class="carousel-item" class:active={i === 0} data-bs-interval="4000">
-							{#if data.loggedIn}
+							{#if data.user}
 								<form action="?/deleteImage" method="post" use:enhance>
 									<input type="hidden" name="image" value={image} />
 									<input type="hidden" name="category" value={sportart} />

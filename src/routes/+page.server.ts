@@ -24,7 +24,7 @@ export const actions = {
 		await signOut(auth)
 			.then(async () => {
 				await setPersistence(auth, inMemoryPersistence);
-				cookies.delete('loggedIn');
+				cookies.delete('user');
 			})
 			.catch((error) => {
 				console.log(error);

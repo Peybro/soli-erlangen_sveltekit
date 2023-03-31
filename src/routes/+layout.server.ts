@@ -1,12 +1,18 @@
-import { browserSessionPersistence, setPersistence } from 'firebase/auth';
-import { auth } from '$lib/services/firebase';
+import { auth } from '$lib/server/firebase';
 
 export const load = async ({ cookies }) => {
-	if (cookies.get('loggedIn') && cookies.get('loggedIn') === 'true') {
-		await setPersistence(auth, browserSessionPersistence);
-	}
+	let user = null;
+	const uid = cookies.get('user');
+	if (!uid) return;
+	await auth
+		.verifyIdToken(uid)
+		.then((decodedToken) => {
+			user = decodedToken;
+		})
+		.catch((error) => {
+			console.log(error);
+            cookies.delete('user');
+		});
 
-	return {
-		loggedIn: cookies.get('loggedIn') ? cookies.get('loggedIn') === 'true' : false
-	};
+	return { user };
 };

@@ -24,7 +24,7 @@
 			<div class="container d-flex justify-content-end">
 				<div class="row">
 					<div class="col">
-						{#if data.loggedIn}
+						{#if data.user}
 							<form method="POST" action="/?/logout" use:enhance>
 								<button
 									type="submit"

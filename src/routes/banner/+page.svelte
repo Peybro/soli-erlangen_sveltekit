@@ -8,7 +8,7 @@
 	const { form, errors, constraints, enhance, delayed } = superForm(data.form);
 </script>
 
-{#if data.loggedIn}
+{#if data.user}
 	<div class="alert alert-{$form.bgColor}" class:muted={!$form.enabled} role="alert">
 		<h4 class="alert-heading">{$form.title}</h4>
 		<p>{$form.description}</p>

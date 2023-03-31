@@ -28,7 +28,7 @@
 	$: seasonTo = seasonFrom === 1 ? 2 : 1;
 </script>
 
-{#if data.loggedIn}
+{#if data.user}
 	<h2 class="heading">Neues Vereinsblatt hochladen</h2>
 
 	{#if form && form.error}

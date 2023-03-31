@@ -5,7 +5,7 @@
 	export let form;
 </script>
 
-{#if data.loggedIn}
+{#if data.user}
 	<div class="alert alert-info" role="alert">
 		<div>Du bist bereits eingeloggt.</div>
 	</div>

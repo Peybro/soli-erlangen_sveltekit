@@ -1,7 +1,5 @@
-import { initializeApp, getApps } from 'firebase/app';
-import { getAuth, setPersistence, browserLocalPersistence } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
+import { initializeApp, getApps } from 'firebase-admin/app';
+import { getAuth} from 'firebase-admin/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,9 +21,5 @@ function makeApp() {
 	return initializeApp(firebaseConfig);
 }
 
-export const firebaseApp = makeApp();
+const firebaseApp = makeApp();
 export const auth = getAuth(firebaseApp);
-setPersistence(auth, browserLocalPersistence);
-
-export const db = getFirestore(firebaseApp);
-export const storage = getStorage(firebaseApp);

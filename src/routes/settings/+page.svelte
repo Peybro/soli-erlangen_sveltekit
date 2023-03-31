@@ -9,7 +9,7 @@
 <h2 class="heading">Einstellungen</h2>
 
 <ul>
-	{#if data.loggedIn}
+	{#if data.user}
 		<li>
 			<a href="/banner">Banner einstellen</a>
 		</li>
