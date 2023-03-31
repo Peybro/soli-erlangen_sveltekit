@@ -28,9 +28,9 @@ export const actions = {
 			return await signInWithEmailAndPassword(auth, email.toString(), password.toString())
 				.then(async (userCredential) => {
 					//? Signed in
-					// const user = userCredential.user;
+					const user = userCredential.user;
 					// console.log(user);
-					cookies.set('loggedIn', 'true');
+					cookies.set('user', user.stsTokenManager.accessToken);
 					throw redirect(301, '/');
 				})
 				.catch((error) => {
