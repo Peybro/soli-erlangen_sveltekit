@@ -36,7 +36,7 @@
 <header class="bg-success">
 	<nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="light">
 		<div class="container">
-			<a class="navbar-brand" href="/"
+			<a class="navbar-brand" href="/" data-sveltekit-preload-data="hover"
 				><img alt="Logo" class="d-inline-block" id="logo" src="/logo.png" width="40" /> Soli-Erlangen</a
 			>
 			{#if width < 992}
@@ -52,6 +52,7 @@
 									class="nav-link"
 									class:active={$page.url.pathname.includes(link.toLowerCase())}
 									on:click={() => (open = false)}
+									data-sveltekit-preload-data="hover"
 									>{link}{link === 'Vorstand' ? ' und Trainer' : ''}</a
 								>
 							</li>
