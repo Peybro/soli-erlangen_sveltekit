@@ -1,46 +1,35 @@
-import { ref, uploadBytes, deleteObject } from 'firebase/storage';
+import {
+	ref,
+	uploadBytes,
+	uploadBytesResumable,
+	deleteObject,
+	getDownloadURL
+} from 'firebase/storage';
 import { storage } from '$lib/services/firebase';
 
-export const load = async () => {
-	return {};
+import { z } from 'zod';
+import { superValidate } from 'sveltekit-superforms/server';
+
+const schema = z.object({
+	images: z.any(),
+	category: z.string()
+});
+
+export const load = async (event) => {
+	const form = await superValidate(event, schema);
+
+	return { form };
 };
 
 export const actions = {
-	uploadImages: async ({ request }) => {
-		const data = await request.formData();
+	uploadImages: async (event) => {
+		// const data = await request.formData();
+		const form = await superValidate(event, schema);
 
-		const category = data.get('category');
-		const files = data.getAll('images');
+		const category = form.data.category;
+		const files = form.data.images;
 
-		files.forEach(async (file) => {
-			if (!(file instanceof File)) {
-				return {
-					success: false,
-					error: 'Bitte wähle gültige Bilder aus!'
-				};
-			}
-
-			const uploadRef = ref(storage, `Bilder/${category}/${file.name}`);
-
-			return await uploadBytes(uploadRef, new Uint8Array(await file.arrayBuffer()), {
-				contentType: `image/${file.name.split('.').at(-1)}`
-			})
-				.then((snapshot) => {
-					console.log(file.name + ' wurde hochgeladen!');
-				})
-				.catch((error) => {
-					// console.log(error);
-					return {
-						success: false,
-						error: error
-					};
-				});
-		});
-
-		return {
-			success: true,
-			message: 'Alle Bilder erfolgreich hochgeladen. Seite neu laden um sie zu sehen.'
-		};
+		return { form };
 	},
 	deleteImage: async ({ request }) => {
 		const data = await request.formData();

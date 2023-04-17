@@ -2,17 +2,19 @@
 	import { listAll, ref, getDownloadURL } from 'firebase/storage';
 	import { storage } from '$lib/services/firebase';
 	import { page } from '$app/stores';
-	import { enhance } from '$app/forms';
+	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data;
-	export let form: { error: string; success: boolean; message: string };
+	// export let form: { error: string; success: boolean; message: string };
 
 	let showUploader = false;
 
 	$: sportart = $page.params.sportart[0].toUpperCase() + $page.params.sportart.slice(1);
+
+	const { form, errors, constraints, enhance, delayed } = superForm(data.form);
 </script>
 
-{#if form && form.error}
+<!-- {#if form && form.error}
 	<div class="alert alert-danger alert-dismissible fade show" role="alert">
 		{form.error}
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" />
@@ -23,7 +25,7 @@
 		{form.message}
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" />
 	</div>
-{/if}
+{/if} -->
 
 <div class="row">
 	<div class="col">
@@ -43,9 +45,10 @@
 {#if showUploader && data.user}
 	<div class="card p-2 mb-3">
 		<form action="?/uploadImages" method="POST" enctype="multipart/form-data" use:enhance>
-			<input type="hidden" name="category" value={sportart} />
+			<input type="hidden" name="category" bind:value={$form.category} />
 			<label class="form-label" for="formFile">Bild(er) auswählen</label>
 			<input
+				bind:value={$form.images}
 				accept="image/png, image/jpeg"
 				class="form-control"
 				id="formFile"

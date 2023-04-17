@@ -1,5 +1,6 @@
-export const load = async ({ cookies }) => {
+export const load = async ({ cookies, params }) => {
 	return {
+		sportart: params.sportart,
 		maps:
 			cookies.get('mapSelection') !== undefined || cookies.get('mapSelection') !== ''
 				? cookies.get('mapSelection')
