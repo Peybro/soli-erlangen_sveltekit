@@ -8,7 +8,7 @@ export const load = async ({ cookies }) => {
 			{
 				sport: 'Gymnastik',
 				subheading: 'Eine Sportart, die Körper und Geist fordert',
-				times: ['Dienstag: 19:30 - 22:00 Uhr'],
+				times: ['Dienstag: 16:00 - 17:00 Uhr'],
 				info: [
 					'Gymnastik ist eine Sportart, die eine Vielzahl von Bewegungen und Übungen umfasst und in verschiedenen Disziplinen ausgeübt werden kann. Sie erfordert Kraft, Flexibilität, Koordination und Eleganz und kann sowohl individuell als auch im Team durchgeführt werden.',
 					{
@@ -95,7 +95,7 @@ export const load = async ({ cookies }) => {
 			{
 				sport: 'Kunstrad',
 				subheading: 'Eine anspruchsvolle Sportart mit artistischem Anspruch',
-				times: ['Dienstag: 18:00 - 19:30 Uhr'],
+				times: ['Dienstag: 17:00 - 19:00 Uhr'],
 				info: [
 					'Kunstrad ist eine Sportart, bei der ein Radfahrer auf einem speziellen Fahrrad namens "Kunstrad" verschiedene akrobatische Übungen vorführt. Dabei geht es vor allem um Geschicklichkeit, Gleichgewichtssinn und Präzision. Kunstrad ist eine anspruchsvolle Sportart, die eine hohe Konzentration erfordert und sowohl als Freizeit- als auch als Leistungssport betrieben werden kann.',
 					{
