@@ -18,8 +18,8 @@
 		</li>
 	{/if}
 	<li>
-		<a href="https://soli-erlangen.de/spiel/" target="_blank"
-			>Spielberichtsbogen (Icons funktionieren gerade nicht)</a
+		<a href="https://radball-spielberichtsbogen.vercel.app/" target="_blank"
+			>Spielberichtsbogen</a
 		>
 	</li>
 </ul>
