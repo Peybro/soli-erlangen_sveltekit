@@ -87,8 +87,15 @@
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-12">
-		<h2 class="heading">Kontakt:</h2>
-		<Trainer open="none" />
+		<div>
+			<h2 class="heading">Aktuell:</h2>
+			<img src="/news/Sportakulum_2024.png" class="w-100" />
+		</div>
+
+		<div class="mt-3">
+			<h2 class="heading">Kontakt:</h2>
+			<Trainer open="none" />
+		</div>
 	</div>
 
 	<Location maps={data.mapSelection || '1'} />
