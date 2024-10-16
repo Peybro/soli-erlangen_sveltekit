@@ -11,7 +11,7 @@ export const load = async ({ cookies }) => {
 		})
 		.catch((error) => {
 			console.log(error);
-            cookies.delete('user');
+			cookies.delete('user');
 		});
 
 	return { user };

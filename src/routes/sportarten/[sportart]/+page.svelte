@@ -3,6 +3,7 @@
 	import { storage } from '$lib/services/firebase';
 	import { page } from '$app/stores';
 	import { enhance } from '$app/forms';
+	import { infos } from '$lib/infos.ts';
 
 	export let data;
 	export let form: { error: string; success: boolean; message: string };
@@ -25,11 +26,25 @@
 	</div>
 {/if}
 
-<div class="row">
+<div class="row mb-4">
 	<div class="col">
 		<h2 class="heading">
 			{sportart}
 		</h2>
+
+		<!-- <h5 class="heading">Wann?</h5> -->
+		{#if infos.filter((s) => s.sport === sportart)[0].times.length > 1}
+			<ul>
+				{#each infos.filter((s) => s.sport === sportart)[0].times as time}
+					<li><h5>{time}</h5></li>
+				{/each}
+			</ul>
+		{:else}
+			<h5>
+				<!-- <span class="heading">Wann?</span>{" "} -->
+				{infos.filter((s) => s.sport === sportart)[0].times[0]}
+			</h5>
+		{/if}
 	</div>
 	{#if data.user}
 		<div class="col-4">
@@ -131,9 +146,9 @@
 	</div>
 {/await}
 
-<h3>{data.infos.filter((s) => s.sport === sportart)[0].subheading}</h3>
+<h3>{infos.filter((s) => s.sport === sportart)[0].subheading}</h3>
 
-{#each data.infos.filter((s) => s.sport === sportart)[0].info as item}
+{#each infos.filter((s) => s.sport === sportart)[0].info as item}
 	{#if typeof item === 'string'}
 		<p>{item}</p>
 	{:else}

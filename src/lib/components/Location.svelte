@@ -40,9 +40,13 @@
 			/>
 			<br /><small
 				><a
-					href="https://www.openstreetmap.org/?mlat=49.55252&amp;mlon=11.02270#map=19/49.55252/11.02270"
-					>Größere Karte anzeigen</a
-				></small
+					href="https://www.openstreetmap.org/?mlat=49.552518&mlon=11.022647#map=19/49.552518/11.022647"
+					target="_blank"
+				>
+					<span class="fw-bold">Kinderland Die Arche</span><br />
+					<span>Lachnerstraße 43</span><br />
+					<span>91058 Erlangen</span>
+				</a></small
 			>
 		{:else if parseInt(maps) === 0}
 			<iframe
@@ -84,9 +88,13 @@
 		/>
 		<br /><small
 			><a
-				href="https://www.openstreetmap.org/?mlat=49.59090&amp;mlon=10.96516#map=19/49.59090/10.96516"
-				>Größere Karte anzeigen</a
-			></small
+				href="https://www.openstreetmap.org/?mlat=49.590900&mlon=10.965159#map=19/49.590900/10.965159"
+				target="_blank"
+			>
+				<span class="fw-bold">Schulturnhalle Grundschule Büchenbach</span><br />
+				<span>Jakob-Nein-Straße 4</span><br />
+				<span>91056 Erlangen</span>
+			</a></small
 		>
 	{:else if parseInt(maps) === 0}
 		<iframe

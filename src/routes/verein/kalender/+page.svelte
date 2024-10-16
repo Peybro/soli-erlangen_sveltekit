@@ -51,7 +51,7 @@
 			nicht möchten dass ungefragt <strong>Cookies in deinem Browser gespeichert werden</strong>,
 			musst du nochmal extra bestätigen, dass der Google Kalender angezeigt werden soll.
 		</p>
-		<p>Wir arbeiten daran eine schönere Methode zu benzuten... :)</p>
+		<p>Wir arbeiten daran eine schönere Methode bereit zu stellen... :)</p>
 	</div>
 	<button class="btn btn-primary m-1" on:click={() => (allowGCal = true)}
 		>Google Kalender anzeigen

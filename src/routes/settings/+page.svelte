@@ -18,9 +18,7 @@
 		</li>
 	{/if}
 	<li>
-		<a href="https://radball-spielberichtsbogen.vercel.app/" target="_blank"
-			>Spielberichtsbogen</a
-		>
+		<a href="https://radball-spielberichtsbogen.vercel.app/" target="_blank">Spielberichtsbogen</a>
 	</li>
 </ul>
 
