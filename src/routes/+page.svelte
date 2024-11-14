@@ -41,6 +41,8 @@
 
 		return await response.json();
 	}
+
+	let now = new Date();
 </script>
 
 <div class="row">
@@ -87,10 +89,12 @@
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-12">
-		<div>
-			<h2 class="heading">Aktuell:</h2>
-			<img src="/news/Sportakulum_2024.png" class="w-100" />
-		</div>
+		{#if now.getFullYear() === 2024 && now.getMonth() + 1 <= 11 && now.getDate() <= 10}
+			<div>
+				<h2 class="heading">Aktuell:</h2>
+				<img src="/news/Sportakulum_2024.png" class="w-100" />
+			</div>
+		{/if}
 
 		<div class="mt-3">
 			<h2 class="heading">Kontakt:</h2>
