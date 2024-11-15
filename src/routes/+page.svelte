@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Carousel from '$lib/components/Carousel.svelte';
 	import Location from '$lib/components/Location.svelte';
+	import News from '$lib/components/News.svelte';
 	import Trainer from '$lib/components/Trainer.svelte';
 
 	export let data;
@@ -41,8 +42,6 @@
 
 		return await response.json();
 	}
-
-	let now = new Date();
 </script>
 
 <div class="row">
@@ -89,12 +88,7 @@
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-12">
-		{#if now.getFullYear() === 2024 && now.getMonth() + 1 <= 11 && now.getDate() <= 10}
-			<div>
-				<h2 class="heading">Aktuell:</h2>
-				<img src="/news/Sportakulum_2024.png" class="w-100" />
-			</div>
-		{/if}
+		<News />
 
 		<div class="mt-3">
 			<h2 class="heading">Kontakt:</h2>
