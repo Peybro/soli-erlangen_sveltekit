@@ -35,10 +35,10 @@
 							>{url.split('%2F')[1].split('?')[0].split('_')[3].startsWith('1.pdf')
 								? 'Frühling-Herbst ' + url.split('_')[2]
 								: 'Herbst ' +
-								  url.split('_')[2] +
-								  '-Frühling' +
-								  ' ' +
-								  (parseInt(url.split('_')[2]) + 1)}</span
+									url.split('_')[2] +
+									'-Frühling' +
+									' ' +
+									(parseInt(url.split('_')[2]) + 1)}</span
 						>
 					</button>
 				</h2>
@@ -78,10 +78,10 @@
 										{url.split('_')[3].startsWith('1.pdf')
 											? 'Frühling-Herbst ' + url.split('_')[2]
 											: 'Herbst ' +
-											  url.split('_')[2] +
-											  '-Frühling' +
-											  ' ' +
-											  (parseInt(url.split('_')[2]) + 1)}
+												url.split('_')[2] +
+												'-Frühling' +
+												' ' +
+												(parseInt(url.split('_')[2]) + 1)}
 									</h4>
 									<iframe
 										src={url}

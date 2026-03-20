@@ -27,7 +27,7 @@ export const load = async (event) => {
 					description: z.string().min(6).optional().default(docSnap.data().description),
 					bgColor: z.string().default(docSnap.data().bgColor),
 					password: z.string()
-			  })
+				})
 			: schema
 	);
 
