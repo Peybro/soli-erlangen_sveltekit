@@ -34,7 +34,7 @@
 <svelte:window bind:innerWidth={width} />
 
 <header class="bg-success">
-	<nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="light">
+	<nav class="navbar navbar-dark navbar-expand-lg" data-bs-theme="light">
 		<div class="container">
 			<a class="navbar-brand" href="/" data-sveltekit-preload-data="hover"
 				><img alt="Logo" class="d-inline-block" id="logo" src="/logo.png" width="40" /> Soli-Erlangen</a
