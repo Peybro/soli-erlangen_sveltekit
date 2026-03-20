@@ -29,7 +29,7 @@
 <div class="row mb-4">
 	<div class="col">
 		<h2 class="heading">
-			{sportart}
+			{sportart === "Gymnastik" ? "Gymnastik (Senioren)" : sportart}
 		</h2>
 
 		<!-- <h5 class="heading">Wann?</h5> -->

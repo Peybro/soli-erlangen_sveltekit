@@ -1,6 +1,6 @@
 export const infos = [
 	{
-		sport: 'Gymnastik (Senioren)',
+		sport: 'Gymnastik',
 		subheading: 'Eine Sportart, die Körper und Geist fordert',
 		times: ['Dienstag: 16:00 - 17:00 Uhr'],
 		info: [
