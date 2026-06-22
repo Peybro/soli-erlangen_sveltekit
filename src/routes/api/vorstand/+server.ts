@@ -12,7 +12,7 @@ export const POST = async () => {
 		{
 			titel: '2. Vorstand',
 			name: 'René',
-			email: '',
+			email: 'vorstand@soli-erlangen.de',
 			telefon: '',
 			mobil: ''
 		},
@@ -26,7 +26,7 @@ export const POST = async () => {
 		{
 			titel: 'Fachwart Kunstrad',
 			name: 'Anne',
-			email: '',
+			email: 'kunstrad@soli-erlangen.de',
 			telefon: '',
 			mobil: ''
 		},
