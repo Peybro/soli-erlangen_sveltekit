@@ -5,7 +5,7 @@ export const POST = async () => {
 		{
 			titel: '1. Vorstand',
 			name: 'Ralf Häusinger',
-			email: 'ralf.haeusinger@t-online.de',
+			email: 'vorstand@soli-erlangen.de',
 			telefon: '09132 796970',
 			mobil: '49017645145696'
 		},
@@ -19,7 +19,7 @@ export const POST = async () => {
 		{
 			titel: 'Sportleiter',
 			name: 'Thomas',
-			email: 't.kretschmann@t-online.de',
+			email: 'sportleitung@soli-erlangen.de',
 			telefon: '',
 			mobil: '49017643839664'
 		},
@@ -33,7 +33,7 @@ export const POST = async () => {
 		{
 			titel: 'Fachwart Reigen',
 			name: 'Renate',
-			email: 'renate.transchel@gmx.de',
+			email: 'reigen@soli-erlangen.de',
 			telefon: '09131 49454 ',
 			mobil: ''
 		},
