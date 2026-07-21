@@ -86,7 +86,7 @@
 
 	<div class="sticky-top d-flex justify-content-center" id="sportarten-nav">
 		<ul class="nav nav-tabs border-0">
-			{#each ['Kunstrad', 'Radball', 'Reigen', 'Gymnastik', 'Kinderturnen', 'Kindertanzen'] as sportart}
+			{#each ['Kunstrad', 'Radball', 'Einradfahren', 'Gymnastik', 'Kinderturnen', 'Kindertanzen'] as sportart}
 				<li class="nav-item">
 					<a
 						href="/sportarten/{sportart.toLowerCase()}"
