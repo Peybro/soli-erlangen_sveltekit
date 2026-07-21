@@ -19,7 +19,7 @@ export const POST = async () => {
 			icon: '/stickmen/logo_kunstrad_q.png'
 		},
 		{
-			sport: 'Reigen',
+			sport: 'Einradfahren',
 			name: 'Renate',
 			email: 'reigen@soli-erlangen.de',
 			telefon: '09131 49454',
